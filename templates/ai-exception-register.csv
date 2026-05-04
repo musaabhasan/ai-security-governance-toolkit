@@ -1,0 +1,2 @@
+exception_id,system,control_reference,exception_description,risk_owner,approved_by,approval_date,expiration_date,compensating_control,status,review_notes
+AI-EX-001,example-system,LOG-01,example temporary logging exception,security-owner,ciso,2026-05-04,2026-08-04,manual review of access logs,open,example row
