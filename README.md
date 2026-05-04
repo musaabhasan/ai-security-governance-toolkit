@@ -47,6 +47,24 @@ The toolkit is designed to be framework-aware without pretending to replace form
 7. Review logging decisions with `templates/ai-logging-retention-checklist.md`.
 8. Run a tabletop exercise from `playbooks/` before production rollout.
 
+## Artifact Catalog
+
+| Artifact | Purpose |
+| --- | --- |
+| `templates/ai-change-impact-assessment.md` | Review governance, data, model, tool, compliance, and continuity impact after AI system changes |
+| `templates/ai-data-flow-record.md` | Document AI data sources, processing steps, destinations, classifications, and controls |
+| `templates/ai-access-review.md` | Review user, administrator, service account, API key, and agent tool permissions |
+| `templates/human-approval-matrix.md` | Define when AI-assisted actions require review, approval, or dual approval |
+| `templates/prompt-injection-test-record.md` | Record direct and indirect prompt injection test cases, outcomes, and remediation |
+| `templates/ai-agent-tool-inventory.csv` | Track agent tools, environments, permissions, data access, owners, and review dates |
+| `templates/ai-exception-register.csv` | Track AI governance exceptions, expirations, risk owners, and compensating controls |
+| `templates/ai-model-card-lite.md` | Capture lightweight model use, limitations, oversight, and risk notes |
+| `templates/model-provider-exit-plan.md` | Plan provider exit triggers, fallback options, data export, and deletion evidence |
+| `policies/ai-log-retention-policy.md` | Define retention expectations for prompts, outputs, embeddings, tool calls, and security events |
+| `playbooks/ai-data-leak-triage.md` | Triage suspected AI data exposure through prompts, outputs, logs, embeddings, or providers |
+| `playbooks/agentic-tool-misuse-response.md` | Contain and investigate incorrect or unauthorized agent tool actions |
+| `examples/edtech-ai-assistant-privacy-review.md` | Example privacy review for a student-facing AI assistant pilot |
+
 ## Suggested Repository Use
 
 This repo can support:
