@@ -21,6 +21,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Control catalog | Governance, identity, data, model, agent, vendor, monitoring, and continuity controls |
 | Evidence management | Evidence register, test records, exception tracking, and audit-ready documentation |
 | Vendor due diligence | AI vendor questionnaire for data handling, security, model controls, compliance, and continuity |
+| Logging and retention | Checklist for prompt, output, embedding, tool-call, and operational log governance |
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
 | EdTech example | AI assistant governance profile for learning platforms and student-facing workflows |
 | Playbooks | Prompt injection incident response and AI service outage tabletop scenarios |
@@ -43,7 +44,8 @@ The toolkit is designed to be framework-aware without pretending to replace form
 4. Track evidence in `templates/evidence-register.csv`.
 5. Use `templates/agentic-tool-review.md` before allowing AI agents to call tools or APIs.
 6. Complete `templates/vendor-ai-due-diligence.md` before approving external AI services.
-7. Run a tabletop exercise from `playbooks/` before production rollout.
+7. Review logging decisions with `templates/ai-logging-retention-checklist.md`.
+8. Run a tabletop exercise from `playbooks/` before production rollout.
 
 ## Suggested Repository Use
 
