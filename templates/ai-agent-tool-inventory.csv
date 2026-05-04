@@ -1,0 +1,2 @@
+agent_name,tool_name,tool_type,environment,permission_level,data_access,approval_required,logging_location,owner,review_date,status,notes
+example-agent,ticket-search,internal-api,production,read,service tickets,yes,siem-platform,security-owner,2026-06-30,approved,example row
