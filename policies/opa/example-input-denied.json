@@ -1,0 +1,16 @@
+{
+  "agent": {
+    "id": "learning-assistant-01",
+    "approved": true,
+    "allowed_tools": ["course_catalog_search", "faq_lookup"]
+  },
+  "tool": {
+    "name": "email_sender"
+  },
+  "action": "send_external_email",
+  "data_classification": "regulated",
+  "human_approval": {
+    "approved": false,
+    "approver": null
+  }
+}

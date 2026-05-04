@@ -1,0 +1,5 @@
+risk_id,use_case,risk_statement,risk_theme,owner,inherent_likelihood,inherent_impact,inherent_rating,controls,residual_likelihood,residual_impact,residual_rating,decision,status,review_date
+AI-R-001,AI assistant,Prompt injection could cause the assistant to reveal sensitive context or ignore policy boundaries,prompt injection,Security Owner,Medium,High,High,"AI-SEC-001;AI-AGT-001",Low,High,Medium,Mitigate,Open,2026-06-30
+AI-R-002,AI assistant,AI logs could store personal or regulated data beyond approved retention,sensitive information disclosure,Data Owner,Medium,High,High,"AI-DATA-001;AI-DATA-002",Low,Medium,Medium,Mitigate,Open,2026-06-30
+AI-R-003,Agent workflow,Agent could invoke an external tool without appropriate approval,excessive agency,System Owner,Medium,High,High,"AI-ID-001;AI-AGT-001;AI-AGT-002",Low,High,Medium,Mitigate,Open,2026-06-30
+AI-R-004,AI service,Vendor outage could disrupt a critical learning or business process,resilience and continuity,Service Owner,Medium,Medium,Medium,AI-BCM-001,Low,Medium,Low,Mitigate,Open,2026-06-30

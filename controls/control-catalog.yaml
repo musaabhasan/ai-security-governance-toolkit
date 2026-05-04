@@ -1,0 +1,181 @@
+version: "0.1.0"
+name: "AI Security Governance Control Catalog"
+owner: "Musaab Hasan"
+description: "A practical control catalog for AI and agentic systems in regulated, education, and public-sector environments."
+controls:
+  - id: AI-GOV-001
+    domain: Governance
+    title: AI system ownership is assigned
+    objective: Ensure every AI use case has a named business owner, technical owner, security reviewer, and operational support owner.
+    risk_themes:
+      - unclear accountability
+      - unmanaged AI adoption
+      - orphaned AI services
+    evidence:
+      - approved AI system intake form
+      - ownership matrix
+      - service catalog entry
+    test:
+      method: inspection
+      frequency: quarterly
+      sample: all production AI systems
+  - id: AI-GOV-002
+    domain: Governance
+    title: AI use-case approval path is defined
+    objective: Require documented approval before AI systems process institutional, student, employee, customer, or regulated data.
+    risk_themes:
+      - shadow AI
+      - policy bypass
+      - unapproved data processing
+    evidence:
+      - approval record
+      - data classification result
+      - risk acceptance record if applicable
+    test:
+      method: sample review
+      frequency: quarterly
+      sample: newly introduced AI use cases
+  - id: AI-DATA-001
+    domain: Data Protection
+    title: Data classification is completed before model integration
+    objective: Identify whether prompts, context, files, outputs, embeddings, and logs include sensitive or regulated data.
+    risk_themes:
+      - sensitive information disclosure
+      - privacy breach
+      - unauthorized model training
+    evidence:
+      - data classification worksheet
+      - data flow diagram
+      - prompt and logging policy
+    test:
+      method: inspection
+      frequency: per release
+      sample: each AI integration
+  - id: AI-DATA-002
+    domain: Data Protection
+    title: Prompt and output logging is risk assessed
+    objective: Ensure AI logs do not create hidden repositories of sensitive data.
+    risk_themes:
+      - log-based data leakage
+      - unmanaged retention
+      - forensic gaps
+    evidence:
+      - logging configuration
+      - retention schedule
+      - redaction test results
+    test:
+      method: configuration review
+      frequency: semiannual
+      sample: systems with prompt or output logging
+  - id: AI-ID-001
+    domain: Identity and Access
+    title: AI agents use scoped service identities
+    objective: Prevent AI workflows from using broad user, administrator, or shared credentials.
+    risk_themes:
+      - excessive agency
+      - privilege abuse
+      - tool misuse
+    evidence:
+      - service account inventory
+      - permission review
+      - access approval record
+    test:
+      method: access review
+      frequency: quarterly
+      sample: all tool-enabled AI agents
+  - id: AI-AGT-001
+    domain: Agentic Controls
+    title: Tool access is explicitly allowlisted
+    objective: Ensure AI agents can only invoke approved tools, APIs, and actions.
+    risk_themes:
+      - unexpected action
+      - unauthorized transaction
+      - tool misuse
+    evidence:
+      - tool allowlist
+      - agent configuration
+      - policy-as-code decision logs
+    test:
+      method: technical test
+      frequency: per release
+      sample: each tool-enabled workflow
+  - id: AI-AGT-002
+    domain: Agentic Controls
+    title: High-impact actions require human approval
+    objective: Require explicit approval before AI systems perform actions that affect people, finances, access rights, records, or availability.
+    risk_themes:
+      - excessive agency
+      - human-agent trust failure
+      - operational harm
+    evidence:
+      - approval workflow configuration
+      - approval records
+      - exception list
+    test:
+      method: workflow test
+      frequency: per release
+      sample: all high-impact actions
+  - id: AI-SEC-001
+    domain: Security Testing
+    title: Prompt injection and malicious instruction tests are performed
+    objective: Assess whether the system resists attempts to override instructions, exfiltrate data, or misuse tools.
+    risk_themes:
+      - prompt injection
+      - data leakage
+      - tool misuse
+    evidence:
+      - test plan
+      - test results
+      - remediation records
+    test:
+      method: adversarial test
+      frequency: per major release
+      sample: externally exposed AI workflows
+  - id: AI-VND-001
+    domain: Third Party and Supply Chain
+    title: AI vendor data-use terms are reviewed
+    objective: Confirm how vendors use, store, train on, retain, and delete institutional data.
+    risk_themes:
+      - third-party exposure
+      - model supply chain
+      - uncontrolled retention
+    evidence:
+      - vendor questionnaire
+      - contract clause review
+      - data processing agreement
+    test:
+      method: contract review
+      frequency: annual
+      sample: all AI vendors
+  - id: AI-OPS-001
+    domain: Monitoring and Operations
+    title: AI system activity is monitored for misuse and abnormal behavior
+    objective: Detect unusual usage, high-risk prompts, repeated denials, unexpected costs, and abnormal tool calls.
+    risk_themes:
+      - abuse
+      - cost exhaustion
+      - incident detection gap
+    evidence:
+      - monitoring dashboard
+      - alert rules
+      - incident records
+    test:
+      method: alert test
+      frequency: quarterly
+      sample: critical AI systems
+  - id: AI-BCM-001
+    domain: Resilience and Continuity
+    title: AI service dependency is included in business continuity plans
+    objective: Ensure critical workflows have fallback procedures if model, vendor, API, identity, network, or data dependencies fail.
+    risk_themes:
+      - service outage
+      - vendor dependency
+      - operational disruption
+    evidence:
+      - business impact analysis
+      - continuity plan
+      - tabletop exercise record
+    test:
+      method: tabletop exercise
+      frequency: annual
+      sample: critical AI-enabled services

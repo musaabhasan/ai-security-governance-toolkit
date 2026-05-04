@@ -1,0 +1,16 @@
+{
+  "agent": {
+    "id": "learning-assistant-01",
+    "approved": true,
+    "allowed_tools": ["course_catalog_search", "faq_lookup"]
+  },
+  "tool": {
+    "name": "course_catalog_search"
+  },
+  "action": "read_record",
+  "data_classification": "internal",
+  "human_approval": {
+    "approved": false,
+    "approver": null
+  }
+}
