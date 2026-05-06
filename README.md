@@ -55,6 +55,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 | `templates/ai-data-flow-record.md` | Document AI data sources, processing steps, destinations, classifications, and controls |
 | `templates/ai-access-review.md` | Review user, administrator, service account, API key, and agent tool permissions |
 | `templates/human-approval-matrix.md` | Define when AI-assisted actions require review, approval, or dual approval |
+| `templates/board-ai-security-assurance-checklist.md` | Executive assurance checklist for approving high-impact AI systems |
 | `templates/prompt-injection-test-record.md` | Record direct and indirect prompt injection test cases, outcomes, and remediation |
 | `templates/ai-agent-tool-inventory.csv` | Track agent tools, environments, permissions, data access, owners, and review dates |
 | `templates/ai-exception-register.csv` | Track AI governance exceptions, expirations, risk owners, and compensating controls |
