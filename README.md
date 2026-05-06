@@ -1,4 +1,4 @@
-﻿# AI Security Governance Toolkit
+# AI Security Governance Toolkit
 
 Practical governance artifacts for organizations adopting large language models, AI assistants, and agentic workflows in regulated, education, and public-sector environments.
 
