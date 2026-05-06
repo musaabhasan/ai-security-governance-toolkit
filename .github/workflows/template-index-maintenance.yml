@@ -1,0 +1,82 @@
+name: Template Index Maintenance
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-template-index:
+    name: Update template index
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Generate template index
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          {
+            echo "# Template Index"
+            echo
+            echo "This index lists the reusable governance templates included in the toolkit."
+            echo
+            echo "| Template | Purpose |"
+            echo "| --- | --- |"
+
+            while IFS= read -r file; do
+              title="$(grep -m 1 '^# ' "$file" | sed 's/^# //')"
+              if [ -z "$title" ]; then
+                title="$(basename "$file" .md | tr '-' ' ')"
+              fi
+              purpose="$(awk 'BEGIN{found=0} /^# /{found=1; next} found && NF{print; exit}' "$file" | sed 's/|/\\|/g')"
+              if [ -z "$purpose" ]; then
+                purpose="Reusable AI governance template."
+              fi
+              echo "| [${title}]($(basename "$file")) | ${purpose} |"
+            done < <(find templates -maxdepth 1 -type f -name '*.md' ! -name 'README.md' | sort)
+          } > templates/README.md
+
+      - name: Open pull request
+        if: ${{ hashFiles('templates/README.md') != '' }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+
+          if git diff --quiet -- templates/README.md; then
+            echo "Template index is already current."
+            exit 0
+          fi
+
+          branch="maintenance/template-index-${RUN_ID}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add templates/README.md
+          git commit -m "Update template index"
+          git push origin "$branch"
+
+          payload="$(jq -n \
+            --arg title "Update template index" \
+            --arg head "$branch" \
+            --arg base "main" \
+            --arg body "Refreshes the template catalog generated from the toolkit's Markdown headings." \
+            '{title: $title, head: $head, base: $base, body: $body}')"
+
+          curl --fail-with-body \
+            -X POST \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${REPO}/pulls" \
+            -d "$payload"
