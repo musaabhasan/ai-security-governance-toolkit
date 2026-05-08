@@ -11,6 +11,7 @@ This index lists the reusable governance templates included in the toolkit.
 | [AI Data Flow Record](ai-data-flow-record.md) | Use this record to document how data enters, moves through, and leaves an AI system. |
 | [AI Incident Severity Matrix](ai-incident-severity-matrix.md) | Use this matrix to classify AI-related incidents consistently before escalation, communications, containment, and post-incident review. |
 | [AI Logging And Retention Checklist](ai-logging-retention-checklist.md) | Use this checklist before enabling prompt, output, embedding, tool-call, or administrative logs for AI systems. |
+| [AI Procurement Scoring Worksheet](ai-procurement-scoring-worksheet.md) | Use this worksheet to score AI vendors, hosted models, embedded AI features, and agent platforms before purchase, renewal, or expansion. |
 | [AI Red-Team Test Plan](ai-red-team-test-plan.md) | Use this template to plan and record AI red-team testing before production release, major model changes, new tool access, or high-impact workflow changes. |
 | [AI Risk Tiering Decision Record](ai-risk-tiering-decision-record.md) | Use this record to classify an AI system into a governance risk tier, set the minimum control baseline, route approvals, and define review cadence. |
 | [AI System Decommissioning Checklist](ai-system-decommissioning-checklist.md) | Use this checklist when retiring, replacing, pausing, or materially reducing an AI system, model, assistant, agent, or AI-enabled vendor service. |

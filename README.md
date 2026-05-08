@@ -20,7 +20,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Risk management | AI risk tiering, AI risk register, control ownership, inherent/residual scoring, and decision tracking |
 | Control catalog | Governance, identity, data, model, agent, vendor, monitoring, and continuity controls |
 | Evidence management | Evidence register, test records, exception tracking, and audit-ready documentation |
-| Vendor due diligence | AI vendor questionnaire for data handling, security, model controls, compliance, and continuity |
+| Vendor due diligence | AI procurement scoring, vendor questionnaire, data handling, security, model controls, compliance, and continuity |
 | Logging and retention | Checklist for prompt, output, embedding, tool-call, and operational log governance |
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
 | Red-team readiness | Scenario-based AI red-team test planning, evidence capture, and release decisions |
@@ -49,11 +49,12 @@ The toolkit is designed to be framework-aware without pretending to replace form
 5. Track evidence in `templates/evidence-register.csv`.
 6. Schedule operating-effectiveness tests in `templates/ai-control-test-schedule.csv`.
 7. Use `templates/agentic-tool-review.md` before allowing AI agents to call tools or APIs.
-8. Complete `templates/vendor-ai-due-diligence.md` before approving external AI services.
-9. Review logging decisions with `templates/ai-logging-retention-checklist.md`.
-10. Run a tabletop exercise from `playbooks/` before production rollout.
-11. Use `templates/ai-system-decommissioning-checklist.md` before retiring, replacing, or pausing an AI system.
-12. Use `templates/model-provider-change-approval.md` before changing models, providers, endpoints, embeddings, regions, or safety filters.
+8. Score external AI products with `templates/ai-procurement-scoring-worksheet.md`.
+9. Complete `templates/vendor-ai-due-diligence.md` before approving external AI services.
+10. Review logging decisions with `templates/ai-logging-retention-checklist.md`.
+11. Run a tabletop exercise from `playbooks/` before production rollout.
+12. Use `templates/ai-system-decommissioning-checklist.md` before retiring, replacing, or pausing an AI system.
+13. Use `templates/model-provider-change-approval.md` before changing models, providers, endpoints, embeddings, regions, or safety filters.
 
 Validate repository artifacts before opening a pull request:
 
@@ -82,6 +83,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-control-test-schedule.csv` | Schedule AI control testing, evidence sources, test owners, results, and remediation due dates |
 | `templates/ai-exception-register.csv` | Track AI governance exceptions, expirations, risk owners, and compensating controls |
 | `templates/ai-model-card-lite.md` | Capture lightweight model use, limitations, oversight, and risk notes |
+| `templates/ai-procurement-scoring-worksheet.md` | Score AI vendors, hosted models, embedded AI features, and agent platforms before purchase, renewal, or expansion |
+| `templates/ai-procurement-scoring-worksheet.csv` | Spreadsheet-friendly companion for weighted procurement scoring, evidence gaps, and remediation ownership |
 | `templates/model-provider-exit-plan.md` | Plan provider exit triggers, fallback options, data export, and deletion evidence |
 | `templates/model-provider-change-approval.md` | Review model/provider changes for data handling, quality, safety, RAG behavior, tool use, cost, continuity, and approval routing |
 | `policies/ai-log-retention-policy.md` | Define retention expectations for prompts, outputs, embeddings, tool calls, and security events |
