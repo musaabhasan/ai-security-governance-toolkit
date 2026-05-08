@@ -55,6 +55,8 @@ Validate repository artifacts before opening a pull request:
 python scripts/validate_repository.py
 ```
 
+The validator checks Markdown templates, template index coverage, control catalog structure, CSV headers, and policy-as-code examples.
+
 ## Artifact Catalog
 
 | Artifact | Purpose |
