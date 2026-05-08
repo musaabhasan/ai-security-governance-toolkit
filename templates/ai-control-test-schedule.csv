@@ -1,0 +1,4 @@
+control_id,control_name,system,control_owner,test_owner,test_method,test_cadence,evidence_source,last_tested,next_due,result,remediation_due,notes
+AI-GOV-001,Approved AI system intake,AI Assistant,Business Owner,Internal Audit,Sample approved intake records and confirm risk owner sign-off,Quarterly,Governance repository,2026-04-30,2026-07-31,Pass,,Example row
+AI-AGT-001,Agent tool allowlist,Agent Workflow,Security Owner,Security Assurance,Inspect policy repository and compare deployed tool access to approved inventory,Per release,Policy repository,2026-04-30,2026-05-31,Needs remediation,2026-06-15,Example row
+AI-MON-001,High-risk activity monitoring,AI Platform,Platform Owner,Security Operations,Review alert logic and verify recent prompt injection and tool denial events are visible,Monthly,SIEM platform,2026-04-30,2026-05-31,Pass,,Example row
