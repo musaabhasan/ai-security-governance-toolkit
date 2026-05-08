@@ -283,6 +283,15 @@ REQUIRED_CSV_HEADERS = {
         "monitoring_signal",
         "owner_role",
     ],
+    "nist-ai-rmf-control-crosswalk.csv": [
+        "rmf_function",
+        "rmf_theme",
+        "governance_objective",
+        "control_ids",
+        "required_evidence",
+        "review_cadence",
+        "owner_role",
+    ],
 }
 
 
@@ -428,6 +437,51 @@ def validate_owasp_llm_2025_mapping_assets() -> None:
         for control_id in [item.strip() for item in row["control_ids"].split(";") if item.strip()]:
             if control_id not in catalog_ids:
                 fail(f"{row['owasp_id']} maps to unknown control ID: {control_id}")
+
+
+def validate_nist_ai_rmf_crosswalk_assets() -> None:
+    script_path = ROOT / "scripts" / "nist_ai_rmf_crosswalk_report.py"
+    guide_path = ROOT / "controls" / "nist-ai-rmf-control-crosswalk.md"
+    crosswalk_path = ROOT / "controls" / "nist-ai-rmf-control-crosswalk.csv"
+
+    for path in (script_path, guide_path, crosswalk_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in ("NIST AI Risk Management Framework", "Govern", "Map", "Measure", "Manage", "--fail-on-missing-function"):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing NIST AI RMF guidance: {required}")
+
+    script_text = read_text(script_path)
+    for required in ("--fail-on-missing-function", "function_coverage", "owner_queues"):
+        if required not in script_text:
+            fail(f"{script_path.relative_to(ROOT)} is missing crosswalk report behavior: {required}")
+
+    with crosswalk_path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.reader(handle)
+        header = next(reader, [])
+    if header != REQUIRED_CSV_HEADERS["nist-ai-rmf-control-crosswalk.csv"]:
+        fail(f"{crosswalk_path.relative_to(ROOT)} has unexpected headers")
+
+    with crosswalk_path.open("r", encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    if len(rows) < 8:
+        fail(f"{crosswalk_path.relative_to(ROOT)} should include multiple NIST AI RMF evidence themes")
+
+    expected_functions = {"GOVERN", "MAP", "MEASURE", "MANAGE"}
+    actual_functions = {row["rmf_function"] for row in rows}
+    if actual_functions != expected_functions:
+        fail(f"{crosswalk_path.relative_to(ROOT)} must cover GOVERN, MAP, MEASURE, and MANAGE")
+
+    catalog_ids = set(CONTROL_ID_PATTERN.findall(read_text(ROOT / "controls" / "control-catalog.yaml")))
+    for index, row in enumerate(rows, start=2):
+        missing_fields = [column for column in REQUIRED_CSV_HEADERS["nist-ai-rmf-control-crosswalk.csv"] if not row[column].strip()]
+        if missing_fields:
+            fail(f"{crosswalk_path.relative_to(ROOT)} row {index} is missing fields: {', '.join(missing_fields)}")
+        for control_id in [item.strip() for item in row["control_ids"].split(";") if item.strip()]:
+            if control_id not in catalog_ids:
+                fail(f"{crosswalk_path.relative_to(ROOT)} row {index} maps to unknown control ID: {control_id}")
 
 
 def validate_csv_templates() -> None:
@@ -751,6 +805,7 @@ def main() -> int:
         validate_control_catalog,
         validate_agentic_risk_control_mapping_assets,
         validate_owasp_llm_2025_mapping_assets,
+        validate_nist_ai_rmf_crosswalk_assets,
         validate_csv_templates,
         validate_policy_as_code_examples,
         validate_exception_aging_report_assets,
