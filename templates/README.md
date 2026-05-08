@@ -8,6 +8,7 @@ This index lists the reusable governance templates included in the toolkit.
 | [AI Access Review](ai-access-review.md) | Use this template to review user, administrator, service account, and tool permissions for AI systems. |
 | [AI Change Impact Assessment](ai-change-impact-assessment.md) | Use this template when an AI system, model, provider, integration, data source, or workflow changes after approval. |
 | [AI Control Evidence RACI](ai-control-evidence-raci.md) | Use this template to assign accountability for AI security controls and the evidence needed to prove that those controls are operating. It is intended for governance reviews, internal audit preparation, and operating-model design. |
+| [AI Control Test Evidence Pack](ai-control-test-evidence-pack.md) | Use this pack to document test objective, population, sample, evidence inventory, result assessment, exceptions, and remediation for AI control operating-effectiveness reviews. |
 | [AI Data Flow Record](ai-data-flow-record.md) | Use this record to document how data enters, moves through, and leaves an AI system. |
 | [AI Incident Severity Matrix](ai-incident-severity-matrix.md) | Use this matrix to classify AI-related incidents consistently before escalation, communications, containment, and post-incident review. |
 | [AI Logging And Retention Checklist](ai-logging-retention-checklist.md) | Use this checklist before enabling prompt, output, embedding, tool-call, or administrative logs for AI systems. |

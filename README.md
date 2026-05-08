@@ -20,6 +20,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Risk management | AI risk tiering, AI risk register, control ownership, inherent/residual scoring, and decision tracking |
 | Control catalog | Governance, identity, data, model, agent, vendor, monitoring, and continuity controls |
 | Evidence management | Evidence register, test records, exception tracking, and audit-ready documentation |
+| Control testing | Evidence packs and examples for AI control design and operating-effectiveness review |
 | Vendor due diligence | AI procurement scoring, vendor questionnaire, data handling, security, model controls, compliance, and continuity |
 | Logging and retention | Checklist for prompt, output, embedding, tool-call, and operational log governance |
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
@@ -57,6 +58,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 12. Use `templates/ai-system-decommissioning-checklist.md` before retiring, replacing, or pausing an AI system.
 13. Use `templates/model-provider-change-approval.md` before changing models, providers, endpoints, embeddings, regions, or safety filters.
 14. Track production health with `templates/model-monitoring-kpi-register.md`.
+15. Package control test evidence with `templates/ai-control-test-evidence-pack.md`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -78,6 +80,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/human-approval-matrix.md` | Define when AI-assisted actions require review, approval, or dual approval |
 | `templates/board-ai-security-assurance-checklist.md` | Executive assurance checklist for approving high-impact AI systems |
 | `templates/ai-control-evidence-raci.md` | Assign control ownership and evidence accountability across AI governance roles |
+| `templates/ai-control-test-evidence-pack.md` | Package AI control test objectives, population, sample, evidence inventory, exceptions, remediation, and reviewer conclusions |
+| `templates/ai-control-test-evidence-examples.csv` | Spreadsheet-friendly examples for operating-effectiveness evidence packs across agent tools, prompt injection, RAG boundaries, monitoring, and continuity |
 | `templates/ai-red-team-test-plan.md` | Plan AI red-team scenarios, evidence capture, pass/fail criteria, and release decisions |
 | `templates/ai-incident-severity-matrix.md` | Classify AI incidents by data exposure, tool misuse, output harm, identity impact, continuity, and escalation triggers |
 | `templates/prompt-injection-test-record.md` | Record direct and indirect prompt injection test cases, outcomes, and remediation |
