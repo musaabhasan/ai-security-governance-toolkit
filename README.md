@@ -32,6 +32,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Access recertification | User, administrator, service account, API key, break-glass, and agent tool permission review |
 | Red-team readiness | Scenario-based AI red-team test planning, evidence capture, and release decisions |
 | Incident response | AI-specific incident severity classification, escalation triggers, and evidence preservation |
+| Incident evidence | Register and report for AI incident timelines, containment evidence, preserved logs, privacy review, communications, and remediation queues |
 | Tabletop evidence | Exercise evidence register and reporting for decision logs, containment, communications, fallback, privacy review, and remediation |
 | Decommissioning | Retirement checklist for model, provider, data, credential, log, vector-store, and integration shutdown |
 | Model/provider changes | Approval workflow for model, provider, endpoint, embedding, safety-filter, region, and agent-runtime changes |
@@ -75,6 +76,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 22. Review AI evaluation evidence readiness with `scripts/evaluation_evidence_report.py`.
 23. Map agentic failure modes to controls and release gates with `scripts/agentic_risk_control_report.py`.
 24. Review AI access recertification gaps with `scripts/access_recertification_report.py`.
+25. Review AI incident evidence gaps with `scripts/incident_evidence_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -107,6 +109,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-red-team-test-plan.md` | Plan AI red-team scenarios, evidence capture, pass/fail criteria, and release decisions |
 | `templates/ai-risk-register-report.md` | Operating guide for summarizing residual AI risk by theme, owner, and review-date status |
 | `templates/ai-incident-severity-matrix.md` | Classify AI incidents by data exposure, tool misuse, output harm, identity impact, continuity, and escalation triggers |
+| `templates/ai-incident-evidence-register.csv` | Track AI incident timelines, evidence references, data exposure, tool misuse, containment evidence, preserved logs, privacy review, communications, root cause, remediation due dates, and closure status |
+| `templates/ai-incident-evidence-report.md` | Operating guide for reviewing missing AI incident evidence, privacy review gaps, tool-misuse log preservation, containment proof, incomplete timelines, and overdue remediation |
 | `templates/prompt-injection-test-record.md` | Record direct and indirect prompt injection test cases, outcomes, and remediation |
 | `templates/ai-agent-tool-inventory.csv` | Track agent tools, environments, permissions, data access, owners, and review dates |
 | `templates/ai-control-test-schedule.csv` | Schedule AI control testing, evidence sources, test owners, results, and remediation due dates |
@@ -136,9 +140,12 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `scripts/evaluation_evidence_report.py` | Generate Markdown or JSON reports for AI evaluation evidence readiness, stale evidence, missing coverage, release-blocking failures, and owner queues |
 | `scripts/agentic_risk_control_report.py` | Generate Markdown or JSON summaries of agentic risk mappings, owner queues, control coverage, release gates, and monitoring signals |
 | `scripts/access_recertification_report.py` | Generate Markdown or JSON reports for AI access recertification gaps, privileged access, service accounts, API tokens, break-glass access, and high-impact agent tool permissions |
+| `scripts/incident_evidence_report.py` | Generate Markdown or JSON reports for AI incident evidence gaps, privacy review, containment proof, log preservation, timelines, communications, root cause, and remediation queues |
 | `examples/ai-data-deletion-evidence-sample.csv` | Sample deletion evidence register covering overdue, verified, missing-evidence, and retention-exception states |
 | `examples/ai-access-recertification-sample.csv` | Sample AI access recertification register covering privileged access, unowned tokens, separated identities, break-glass access, and current audit roles |
 | `examples/ai-access-recertification-report.json` | Example machine-readable output from the access recertification report |
+| `examples/ai-incident-evidence-sample.csv` | Sample AI incident evidence register covering privacy review gaps, missing tool logs, incomplete timelines, containment evidence gaps, overdue remediation, and closed incidents |
+| `examples/ai-incident-evidence-report.json` | Example machine-readable output from the incident evidence report |
 | `examples/ai-third-party-dependency-sample.csv` | Sample third-party AI dependency register covering missing DPA, subprocessor transparency, stale assurance, and continuity gaps |
 | `examples/ai-tabletop-exercise-evidence-sample.csv` | Sample tabletop evidence register covering provider fallback, prompt injection, data exposure, and agent tool misuse scenarios |
 | `examples/ai-evaluation-evidence-sample.csv` | Sample evaluation evidence register covering RAG, security, citation, human review, low pass-rate, and stale evidence cases |

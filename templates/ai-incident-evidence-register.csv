@@ -1,0 +1,1 @@
+incident_id,system,incident_type,severity,detected_at,reported_at,incident_owner,containment_owner,data_exposure,tool_misuse,model_or_provider,affected_users,evidence_reference,timeline_complete,containment_evidence,logs_preserved,privacy_reviewed,communications_prepared,root_cause_status,remediation_due,status,notes
