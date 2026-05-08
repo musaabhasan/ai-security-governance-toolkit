@@ -10,6 +10,7 @@ This index lists the reusable governance templates included in the toolkit.
 | [AI Control Evidence RACI](ai-control-evidence-raci.md) | Use this template to assign accountability for AI security controls and the evidence needed to prove that those controls are operating. It is intended for governance reviews, internal audit preparation, and operating-model design. |
 | [AI Data Flow Record](ai-data-flow-record.md) | Use this record to document how data enters, moves through, and leaves an AI system. |
 | [AI Logging And Retention Checklist](ai-logging-retention-checklist.md) | Use this checklist before enabling prompt, output, embedding, tool-call, or administrative logs for AI systems. |
+| [AI Red-Team Test Plan](ai-red-team-test-plan.md) | Use this template to plan and record AI red-team testing before production release, major model changes, new tool access, or high-impact workflow changes. |
 | [Lightweight AI Model Card](ai-model-card-lite.md) | Use this model card for internal review when a full model card is not available from the provider. |
 | [AI System Intake](ai-system-intake.md) | ## 1. Basic Information |
 | [Board AI Security Assurance Checklist](board-ai-security-assurance-checklist.md) | This checklist helps executives, audit committees, and senior technology leaders ask practical assurance questions before approving high-impact AI systems. It focuses on governance evidence, operational accountability, and security controls that can be reviewed without requiring the board to inspect source code or model internals. |
