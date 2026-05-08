@@ -16,6 +16,80 @@ HIGH_IMPACT_ACTIONS = {
     "approve_request",
     "execute_code",
 }
+REQUIRED_CSV_HEADERS = {
+    "ai-agent-tool-inventory.csv": [
+        "agent_name",
+        "tool_name",
+        "tool_type",
+        "environment",
+        "permission_level",
+        "data_access",
+        "approval_required",
+        "logging_location",
+        "owner",
+        "review_date",
+        "status",
+        "notes",
+    ],
+    "ai-control-test-schedule.csv": [
+        "control_id",
+        "control_name",
+        "system",
+        "control_owner",
+        "test_owner",
+        "test_method",
+        "test_cadence",
+        "evidence_source",
+        "last_tested",
+        "next_due",
+        "result",
+        "remediation_due",
+        "notes",
+    ],
+    "ai-exception-register.csv": [
+        "exception_id",
+        "system",
+        "control_reference",
+        "exception_description",
+        "risk_owner",
+        "approved_by",
+        "approval_date",
+        "expiration_date",
+        "compensating_control",
+        "status",
+        "review_notes",
+    ],
+    "ai-risk-register.csv": [
+        "risk_id",
+        "use_case",
+        "risk_statement",
+        "risk_theme",
+        "owner",
+        "inherent_likelihood",
+        "inherent_impact",
+        "inherent_rating",
+        "controls",
+        "residual_likelihood",
+        "residual_impact",
+        "residual_rating",
+        "decision",
+        "status",
+        "review_date",
+    ],
+    "evidence-register.csv": [
+        "evidence_id",
+        "control_id",
+        "evidence_name",
+        "system",
+        "owner",
+        "source",
+        "frequency",
+        "last_collected",
+        "next_due",
+        "status",
+        "notes",
+    ],
+}
 
 
 def fail(message: str) -> None:
@@ -73,6 +147,9 @@ def validate_csv_templates() -> None:
             fail(f"{path.relative_to(ROOT)} has an empty header column")
         if len(set(header)) != len(header):
             fail(f"{path.relative_to(ROOT)} has duplicate header columns")
+        expected = REQUIRED_CSV_HEADERS.get(path.name)
+        if expected is not None and header != expected:
+            fail(f"{path.relative_to(ROOT)} has unexpected headers")
 
 
 def validate_policy_as_code_examples() -> None:

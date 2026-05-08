@@ -44,10 +44,11 @@ The toolkit is designed to be framework-aware without pretending to replace form
 2. Record risks in `templates/ai-risk-register.csv`.
 3. Select controls from `controls/control-catalog.yaml`.
 4. Track evidence in `templates/evidence-register.csv`.
-5. Use `templates/agentic-tool-review.md` before allowing AI agents to call tools or APIs.
-6. Complete `templates/vendor-ai-due-diligence.md` before approving external AI services.
-7. Review logging decisions with `templates/ai-logging-retention-checklist.md`.
-8. Run a tabletop exercise from `playbooks/` before production rollout.
+5. Schedule operating-effectiveness tests in `templates/ai-control-test-schedule.csv`.
+6. Use `templates/agentic-tool-review.md` before allowing AI agents to call tools or APIs.
+7. Complete `templates/vendor-ai-due-diligence.md` before approving external AI services.
+8. Review logging decisions with `templates/ai-logging-retention-checklist.md`.
+9. Run a tabletop exercise from `playbooks/` before production rollout.
 
 Validate repository artifacts before opening a pull request:
 
@@ -71,6 +72,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-incident-severity-matrix.md` | Classify AI incidents by data exposure, tool misuse, output harm, identity impact, continuity, and escalation triggers |
 | `templates/prompt-injection-test-record.md` | Record direct and indirect prompt injection test cases, outcomes, and remediation |
 | `templates/ai-agent-tool-inventory.csv` | Track agent tools, environments, permissions, data access, owners, and review dates |
+| `templates/ai-control-test-schedule.csv` | Schedule AI control testing, evidence sources, test owners, results, and remediation due dates |
 | `templates/ai-exception-register.csv` | Track AI governance exceptions, expirations, risk owners, and compensating controls |
 | `templates/ai-model-card-lite.md` | Capture lightweight model use, limitations, oversight, and risk notes |
 | `templates/model-provider-exit-plan.md` | Plan provider exit triggers, fallback options, data export, and deletion evidence |
