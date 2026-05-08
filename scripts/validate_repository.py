@@ -159,6 +159,26 @@ REQUIRED_CSV_HEADERS = {
         "next_review_date",
         "notes",
     ],
+    "ai-tabletop-exercise-evidence-register.csv": [
+        "exercise_id",
+        "scenario",
+        "system",
+        "exercise_date",
+        "facilitator",
+        "participants",
+        "evidence_reference",
+        "incident_domain",
+        "severity_tested",
+        "decision_log_complete",
+        "communications_tested",
+        "technical_containment_tested",
+        "provider_fallback_tested",
+        "legal_privacy_reviewed",
+        "lessons_owner",
+        "remediation_due",
+        "status",
+        "notes",
+    ],
     "evidence-register.csv": [
         "evidence_id",
         "control_id",
@@ -358,6 +378,33 @@ def validate_third_party_dependency_assets() -> None:
         fail(f"{sample_path.relative_to(ROOT)} should include multiple third-party dependency states")
 
 
+def validate_tabletop_evidence_assets() -> None:
+    script_path = ROOT / "scripts" / "tabletop_evidence_report.py"
+    guide_path = ROOT / "templates" / "ai-tabletop-evidence-report.md"
+    register_path = ROOT / "templates" / "ai-tabletop-exercise-evidence-register.csv"
+    sample_path = ROOT / "examples" / "ai-tabletop-exercise-evidence-sample.csv"
+
+    for path in (script_path, guide_path, register_path, sample_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in ("missing_evidence", "decision_log_gap", "provider_fallback_gap", "--fail-on-high"):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing tabletop evidence guidance: {required}")
+
+    expected = REQUIRED_CSV_HEADERS["ai-tabletop-exercise-evidence-register.csv"]
+    for path in (register_path, sample_path):
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            rows = list(csv.reader(handle))
+        if not rows:
+            fail(f"{path.relative_to(ROOT)} is empty")
+        if rows[0] != expected:
+            fail(f"{path.relative_to(ROOT)} has unexpected headers")
+    if len(list(csv.reader(sample_path.open("r", encoding="utf-8", newline="")))) < 4:
+        fail(f"{sample_path.relative_to(ROOT)} should include multiple tabletop exercise states")
+
+
 def validate_policy_input_shape(path: Path, example: dict[str, object]) -> None:
     required_top_level = ("agent", "tool", "action", "data_classification", "human_approval")
     for field in required_top_level:
@@ -410,6 +457,7 @@ def main() -> int:
         validate_risk_register_report_assets,
         validate_data_deletion_evidence_assets,
         validate_third_party_dependency_assets,
+        validate_tabletop_evidence_assets,
     ]
     for check in checks:
         check()
