@@ -1,0 +1,11 @@
+domain,weight,score_1_to_5,weighted_score,evidence_reference,risk_notes,required_action,owner,due_date,status
+Strategic fit and measurable value,10,,,,,,,,
+Data protection and privacy,15,,,,,,,,
+Security architecture and identity controls,15,,,,,,,,
+Model governance and transparency,10,,,,,,,,
+Safety bias accessibility and inclusion,10,,,,,,,,
+Knowledge base and RAG governance,8,,,,,,,,
+Integration API and agentic tool risk,8,,,,,,,,
+Vendor assurance and contractual controls,10,,,,,,,,
+Continuity portability and exit readiness,8,,,,,,,,
+Cost observability and support,6,,,,,,,,

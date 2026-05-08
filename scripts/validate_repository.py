@@ -59,6 +59,18 @@ REQUIRED_CSV_HEADERS = {
         "status",
         "review_notes",
     ],
+    "ai-procurement-scoring-worksheet.csv": [
+        "domain",
+        "weight",
+        "score_1_to_5",
+        "weighted_score",
+        "evidence_reference",
+        "risk_notes",
+        "required_action",
+        "owner",
+        "due_date",
+        "status",
+    ],
     "ai-risk-register.csv": [
         "risk_id",
         "use_case",
@@ -147,6 +159,9 @@ def validate_csv_templates() -> None:
             fail(f"{path.relative_to(ROOT)} has an empty header column")
         if len(set(header)) != len(header):
             fail(f"{path.relative_to(ROOT)} has duplicate header columns")
+        for index, row in enumerate(rows[1:], start=2):
+            if len(row) != len(header):
+                fail(f"{path.relative_to(ROOT)} row {index} has {len(row)} columns; expected {len(header)}")
         expected = REQUIRED_CSV_HEADERS.get(path.name)
         if expected is not None and header != expected:
             fail(f"{path.relative_to(ROOT)} has unexpected headers")
