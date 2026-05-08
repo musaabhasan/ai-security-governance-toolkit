@@ -1,0 +1,11 @@
+kpi_id,system,model_or_provider,metric_category,metric_name,definition,data_source,threshold,review_cadence,owner,escalation_trigger,last_result,status,notes
+KPI-001,,,Quality,Task success rate,Percentage of sampled outputs meeting task rubric criteria,Human review sample,Below 85%,Monthly,Product owner,Two consecutive misses,,,
+KPI-002,,,Safety,Policy violation rate,Share of outputs or actions violating content privacy or tool-use policy,Safety logs and sampled review,Above 1% or any critical event,Weekly,Risk owner,Critical violation,,,
+KPI-003,,,Retrieval,Unsupported citation rate,Percentage of cited claims not supported by retrieved source text,Citation audit,Above 5%,Monthly,Knowledge owner,High-impact unsupported claim,,,
+KPI-004,,,Drift,Prompt or model change without approval,Count of production changes missing approval record,Change log,Any occurrence,Weekly,Technical owner,Unapproved change,,,
+KPI-005,,,Security,Prompt injection success rate,Percentage of tests where injected content influenced instructions secrets or tools,Red-team regression tests,Above 0% for high-impact tools,Release and quarterly,Security owner,Successful tool or data misuse,,,
+KPI-006,,,Reliability,P95 response latency,95th percentile user-facing response latency,Observability metrics,Above agreed SLA,Weekly,Platform owner,SLA breach,,,
+KPI-007,,,Continuity,Fallback success rate,Percentage of provider or model fallback attempts that complete safely,Failover logs,Below 95%,Monthly,Platform owner,Failed fallback during incident,,,
+KPI-008,,,Cost,Monthly spend against budget,Actual spend divided by approved monthly budget,Provider billing and chargeback,Above 90% warning or above 100% breach,Weekly,Finance or product owner,Budget breach,,,
+KPI-009,,,Oversight,Human approval bypass count,Number of high-impact actions completed without required approval,Tool-call and approval logs,Any occurrence,Weekly,Governance owner,Bypass detected,,,
+KPI-010,,,Privacy,Sensitive data exposure count,Number of prompts outputs logs or retrieved snippets containing prohibited data,DLP or manual review,Any confirmed exposure,Weekly,Privacy owner,Confirmed exposure,,,
