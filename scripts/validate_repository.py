@@ -42,6 +42,28 @@ REQUIRED_CSV_HEADERS = {
         "status",
         "notes",
     ],
+    "ai-access-recertification-register.csv": [
+        "access_id",
+        "system",
+        "identity",
+        "identity_type",
+        "role",
+        "permission_level",
+        "data_access",
+        "tool_access",
+        "owner",
+        "business_justification",
+        "last_login_date",
+        "last_review_date",
+        "mfa_enabled",
+        "break_glass",
+        "api_key_or_token",
+        "status",
+        "employment_status",
+        "review_decision",
+        "next_review_date",
+        "notes",
+    ],
     "ai-control-test-schedule.csv": [
         "control_id",
         "control_name",
@@ -520,6 +542,46 @@ def validate_evaluation_evidence_assets() -> None:
         fail(f"{sample_path.relative_to(ROOT)} should include multiple evaluation evidence states")
 
 
+def validate_access_recertification_assets() -> None:
+    script_path = ROOT / "scripts" / "access_recertification_report.py"
+    guide_path = ROOT / "templates" / "ai-access-recertification-report.md"
+    register_path = ROOT / "templates" / "ai-access-recertification-register.csv"
+    sample_path = ROOT / "examples" / "ai-access-recertification-sample.csv"
+    json_report_path = ROOT / "examples" / "ai-access-recertification-report.json"
+
+    for path in (script_path, guide_path, register_path, sample_path, json_report_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in (
+        "separated_identity_still_active",
+        "privileged_without_mfa",
+        "unowned_token_or_service_account",
+        "--fail-on-high",
+    ):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing access recertification guidance: {required}")
+
+    expected = REQUIRED_CSV_HEADERS["ai-access-recertification-register.csv"]
+    for path in (register_path, sample_path):
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            rows = list(csv.reader(handle))
+        if not rows:
+            fail(f"{path.relative_to(ROOT)} is empty")
+        if rows[0] != expected:
+            fail(f"{path.relative_to(ROOT)} has unexpected headers")
+    if len(list(csv.reader(sample_path.open("r", encoding="utf-8", newline="")))) < 5:
+        fail(f"{sample_path.relative_to(ROOT)} should include multiple access recertification states")
+
+    json_report = json.loads(read_text(json_report_path))
+    summary = json_report.get("summary", {})
+    if summary.get("total") != 6:
+        fail(f"{json_report_path.relative_to(ROOT)} has an unexpected total access count")
+    if summary.get("high", 0) < 4:
+        fail(f"{json_report_path.relative_to(ROOT)} should include high-severity access gaps")
+
+
 def validate_policy_input_shape(path: Path, example: dict[str, object]) -> None:
     required_top_level = ("agent", "tool", "action", "data_classification", "human_approval")
     for field in required_top_level:
@@ -575,6 +637,7 @@ def main() -> int:
         validate_third_party_dependency_assets,
         validate_tabletop_evidence_assets,
         validate_evaluation_evidence_assets,
+        validate_access_recertification_assets,
     ]
     for check in checks:
         check()
