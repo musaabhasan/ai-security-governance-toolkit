@@ -1,0 +1,6 @@
+exception_id,system,control_reference,exception_description,risk_owner,approved_by,approval_date,expiration_date,compensating_control,status,review_notes
+AI-EX-010,student-ai-advisor,LOG-01,temporary reduction in prompt logging while retention configuration is updated,security-owner,ciso,2026-03-01,2026-04-15,manual review of privileged chat logs,open,expired exception requiring escalation
+AI-EX-011,rag-knowledge-base,DATA-02,temporary exception for delayed source-document recertification,data-owner,head-of-risk,2026-04-10,2026-05-20,weekly source sampling and owner attestation,active,expires inside warning window
+AI-EX-012,agentic-support-bot,AGT-01,temporary use of manual approval outside the automated approval workflow,operations-owner,ciso,2026-04-21,,daily reconciliation of executed actions,approved,missing expiration date
+AI-EX-013,model-monitoring-service,MON-01,temporary threshold adjustment during model drift calibration,model-risk-owner,ai-governance-chair,2026-04-01,2026-08-15,weekly KPI review and documented variance analysis,open,active exception under review cadence
+AI-EX-014,vendor-ai-service,VND-01,temporary vendor evidence gap accepted pending renewal security package,procurement-owner,ciso,2026-02-01,2026-03-01,restricted pilot scope and blocked regulated data,closed,closed after updated vendor evidence was received

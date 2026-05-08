@@ -222,6 +222,31 @@ def validate_policy_as_code_examples() -> None:
         fail(f"{denied_path.relative_to(ROOT)} should represent a denied policy decision")
 
 
+def validate_exception_aging_report_assets() -> None:
+    script_path = ROOT / "scripts" / "exception_aging_report.py"
+    guide_path = ROOT / "templates" / "ai-exception-aging-report.md"
+    sample_path = ROOT / "examples" / "ai-exception-register-sample.csv"
+
+    for path in (script_path, guide_path, sample_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in ("expired", "missing_expiration", "expiring_soon", "--fail-on-expired"):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing exception-aging guidance: {required}")
+
+    with sample_path.open("r", encoding="utf-8", newline="") as handle:
+        rows = list(csv.reader(handle))
+    if not rows:
+        fail(f"{sample_path.relative_to(ROOT)} is empty")
+    expected = REQUIRED_CSV_HEADERS["ai-exception-register.csv"]
+    if rows[0] != expected:
+        fail(f"{sample_path.relative_to(ROOT)} has unexpected headers")
+    if len(rows) < 4:
+        fail(f"{sample_path.relative_to(ROOT)} should include multiple exception states")
+
+
 def validate_policy_input_shape(path: Path, example: dict[str, object]) -> None:
     required_top_level = ("agent", "tool", "action", "data_classification", "human_approval")
     for field in required_top_level:
@@ -270,6 +295,7 @@ def main() -> int:
         validate_control_catalog,
         validate_csv_templates,
         validate_policy_as_code_examples,
+        validate_exception_aging_report_assets,
     ]
     for check in checks:
         check()

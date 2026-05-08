@@ -21,6 +21,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Control catalog | Governance, identity, data, model, agent, vendor, monitoring, and continuity controls |
 | Evidence management | Evidence register, test records, exception tracking, and audit-ready documentation |
 | Control testing | Evidence packs and examples for AI control design and operating-effectiveness review |
+| Exception management | Aging report for expired, expiring, missing-expiration, and inconsistent AI governance exceptions |
 | Vendor due diligence | AI procurement scoring, vendor questionnaire, data handling, security, model controls, compliance, and continuity |
 | Logging and retention | Checklist for prompt, output, embedding, tool-call, and operational log governance |
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
@@ -59,6 +60,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 13. Use `templates/model-provider-change-approval.md` before changing models, providers, endpoints, embeddings, regions, or safety filters.
 14. Track production health with `templates/model-monitoring-kpi-register.md`.
 15. Package control test evidence with `templates/ai-control-test-evidence-pack.md`.
+16. Review active exceptions with `scripts/exception_aging_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -88,6 +90,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-agent-tool-inventory.csv` | Track agent tools, environments, permissions, data access, owners, and review dates |
 | `templates/ai-control-test-schedule.csv` | Schedule AI control testing, evidence sources, test owners, results, and remediation due dates |
 | `templates/ai-exception-register.csv` | Track AI governance exceptions, expirations, risk owners, and compensating controls |
+| `templates/ai-exception-aging-report.md` | Operational guide for aging AI exceptions and converting registers into risk-owner review queues |
 | `templates/ai-model-card-lite.md` | Capture lightweight model use, limitations, oversight, and risk notes |
 | `templates/ai-procurement-scoring-worksheet.md` | Score AI vendors, hosted models, embedded AI features, and agent platforms before purchase, renewal, or expansion |
 | `templates/ai-procurement-scoring-worksheet.csv` | Spreadsheet-friendly companion for weighted procurement scoring, evidence gaps, and remediation ownership |
@@ -98,6 +101,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `policies/ai-log-retention-policy.md` | Define retention expectations for prompts, outputs, embeddings, tool calls, and security events |
 | `playbooks/ai-data-leak-triage.md` | Triage suspected AI data exposure through prompts, outputs, logs, embeddings, or providers |
 | `playbooks/agentic-tool-misuse-response.md` | Contain and investigate incorrect or unauthorized agent tool actions |
+| `scripts/exception_aging_report.py` | Generate Markdown or JSON reports for expired, expiring, missing-expiration, and inconsistent AI exceptions |
+| `examples/ai-exception-register-sample.csv` | Sample exception register for report testing and governance workshop demonstrations |
 | `examples/edtech-ai-assistant-privacy-review.md` | Example privacy review for a student-facing AI assistant pilot |
 
 ## Suggested Repository Use
