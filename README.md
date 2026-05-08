@@ -17,7 +17,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Area | Artifacts |
 | --- | --- |
 | AI system intake | Initial AI use-case review, data classification, deployment model, ownership, and approval path |
-| Risk management | AI risk register, control ownership, inherent/residual scoring, and decision tracking |
+| Risk management | AI risk tiering, AI risk register, control ownership, inherent/residual scoring, and decision tracking |
 | Control catalog | Governance, identity, data, model, agent, vendor, monitoring, and continuity controls |
 | Evidence management | Evidence register, test records, exception tracking, and audit-ready documentation |
 | Vendor due diligence | AI vendor questionnaire for data handling, security, model controls, compliance, and continuity |
@@ -41,14 +41,15 @@ The toolkit is designed to be framework-aware without pretending to replace form
 ## Quick Start
 
 1. Copy `templates/ai-system-intake.md` for each AI use case.
-2. Record risks in `templates/ai-risk-register.csv`.
-3. Select controls from `controls/control-catalog.yaml`.
-4. Track evidence in `templates/evidence-register.csv`.
-5. Schedule operating-effectiveness tests in `templates/ai-control-test-schedule.csv`.
-6. Use `templates/agentic-tool-review.md` before allowing AI agents to call tools or APIs.
-7. Complete `templates/vendor-ai-due-diligence.md` before approving external AI services.
-8. Review logging decisions with `templates/ai-logging-retention-checklist.md`.
-9. Run a tabletop exercise from `playbooks/` before production rollout.
+2. Classify the use case with `templates/ai-risk-tiering-decision-record.md`.
+3. Record risks in `templates/ai-risk-register.csv`.
+4. Select controls from `controls/control-catalog.yaml`.
+5. Track evidence in `templates/evidence-register.csv`.
+6. Schedule operating-effectiveness tests in `templates/ai-control-test-schedule.csv`.
+7. Use `templates/agentic-tool-review.md` before allowing AI agents to call tools or APIs.
+8. Complete `templates/vendor-ai-due-diligence.md` before approving external AI services.
+9. Review logging decisions with `templates/ai-logging-retention-checklist.md`.
+10. Run a tabletop exercise from `playbooks/` before production rollout.
 
 Validate repository artifacts before opening a pull request:
 
@@ -63,6 +64,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | Artifact | Purpose |
 | --- | --- |
 | `templates/ai-change-impact-assessment.md` | Review governance, data, model, tool, compliance, and continuity impact after AI system changes |
+| `templates/ai-risk-tiering-decision-record.md` | Classify AI systems into risk tiers, set required control baselines, define approval routes, and record residual-risk decisions |
 | `templates/ai-data-flow-record.md` | Document AI data sources, processing steps, destinations, classifications, and controls |
 | `templates/ai-access-review.md` | Review user, administrator, service account, API key, and agent tool permissions |
 | `templates/human-approval-matrix.md` | Define when AI-assisted actions require review, approval, or dual approval |

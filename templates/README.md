@@ -12,6 +12,7 @@ This index lists the reusable governance templates included in the toolkit.
 | [AI Incident Severity Matrix](ai-incident-severity-matrix.md) | Use this matrix to classify AI-related incidents consistently before escalation, communications, containment, and post-incident review. |
 | [AI Logging And Retention Checklist](ai-logging-retention-checklist.md) | Use this checklist before enabling prompt, output, embedding, tool-call, or administrative logs for AI systems. |
 | [AI Red-Team Test Plan](ai-red-team-test-plan.md) | Use this template to plan and record AI red-team testing before production release, major model changes, new tool access, or high-impact workflow changes. |
+| [AI Risk Tiering Decision Record](ai-risk-tiering-decision-record.md) | Use this record to classify an AI system into a governance risk tier, set the minimum control baseline, route approvals, and define review cadence. |
 | [Lightweight AI Model Card](ai-model-card-lite.md) | Use this model card for internal review when a full model card is not available from the provider. |
 | [AI System Intake](ai-system-intake.md) | ## 1. Basic Information |
 | [Board AI Security Assurance Checklist](board-ai-security-assurance-checklist.md) | This checklist helps executives, audit committees, and senior technology leaders ask practical assurance questions before approving high-impact AI systems. It focuses on governance evidence, operational accountability, and security controls that can be reviewed without requiring the board to inspect source code or model internals. |
