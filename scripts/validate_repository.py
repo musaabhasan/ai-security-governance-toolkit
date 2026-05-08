@@ -138,6 +138,27 @@ REQUIRED_CSV_HEADERS = {
         "next_review_date",
         "notes",
     ],
+    "ai-third-party-dependency-register.csv": [
+        "dependency_id",
+        "system",
+        "provider",
+        "service_category",
+        "dependency_type",
+        "data_access",
+        "criticality",
+        "contract_owner",
+        "approved_use",
+        "region",
+        "subprocessors_listed",
+        "dpa_status",
+        "security_assurance",
+        "assurance_review_date",
+        "exit_plan_status",
+        "business_continuity_status",
+        "status",
+        "next_review_date",
+        "notes",
+    ],
     "evidence-register.csv": [
         "evidence_id",
         "control_id",
@@ -305,6 +326,38 @@ def validate_data_deletion_evidence_assets() -> None:
         fail(f"{sample_path.relative_to(ROOT)} should include multiple deletion states")
 
 
+def validate_third_party_dependency_assets() -> None:
+    script_path = ROOT / "scripts" / "third_party_dependency_report.py"
+    guide_path = ROOT / "templates" / "ai-third-party-dependency-report.md"
+    register_path = ROOT / "templates" / "ai-third-party-dependency-register.csv"
+    sample_path = ROOT / "examples" / "ai-third-party-dependency-sample.csv"
+
+    for path in (script_path, guide_path, register_path, sample_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in (
+        "missing_dpa",
+        "missing_subprocessor_transparency",
+        "overdue_assurance_review",
+        "--fail-on-high",
+    ):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing third-party dependency guidance: {required}")
+
+    expected = REQUIRED_CSV_HEADERS["ai-third-party-dependency-register.csv"]
+    for path in (register_path, sample_path):
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            rows = list(csv.reader(handle))
+        if not rows:
+            fail(f"{path.relative_to(ROOT)} is empty")
+        if rows[0] != expected:
+            fail(f"{path.relative_to(ROOT)} has unexpected headers")
+    if len(list(csv.reader(sample_path.open("r", encoding="utf-8", newline="")))) < 4:
+        fail(f"{sample_path.relative_to(ROOT)} should include multiple third-party dependency states")
+
+
 def validate_policy_input_shape(path: Path, example: dict[str, object]) -> None:
     required_top_level = ("agent", "tool", "action", "data_classification", "human_approval")
     for field in required_top_level:
@@ -356,6 +409,7 @@ def main() -> int:
         validate_exception_aging_report_assets,
         validate_risk_register_report_assets,
         validate_data_deletion_evidence_assets,
+        validate_third_party_dependency_assets,
     ]
     for check in checks:
         check()
