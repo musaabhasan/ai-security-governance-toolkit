@@ -48,6 +48,12 @@ The toolkit is designed to be framework-aware without pretending to replace form
 7. Review logging decisions with `templates/ai-logging-retention-checklist.md`.
 8. Run a tabletop exercise from `playbooks/` before production rollout.
 
+Validate repository artifacts before opening a pull request:
+
+```bash
+python scripts/validate_repository.py
+```
+
 ## Artifact Catalog
 
 | Artifact | Purpose |
