@@ -1,0 +1,5 @@
+request_id,system,processor,data_subject_or_dataset,deletion_scope,requested_at,due_date,completed_at,evidence_reference,verification_method,verifier,status,retention_exception,next_review_date,notes
+DEL-001,Student AI Assistant,Internal RAG Platform,student-support-upload-batch-2026-04,prompts;uploaded_files;embeddings,2026-04-10,2026-04-25,,,,,pending_vendor,,,Waiting for vector index deletion confirmation
+DEL-002,Research Summarizer,Hosted Model Provider,faculty-research-notes-export,provider_logs;prompt_history,2026-04-18,2026-05-12,2026-05-01,EV-DEL-002,provider deletion certificate,privacy-reviewer,verified,,,Provider confirmation sampled against tenant export
+DEL-003,Admissions Chatbot,Analytics Warehouse,applicant-chat-session-991,analytics_events;conversation_logs,2026-04-20,2026-05-05,2026-05-03,,,,completed,,,Completion marked but evidence package is missing
+DEL-004,AI Coding Assistant,Security Log Platform,developer-session-incident-77,security_logs;tool_call_logs,2026-04-22,2026-05-20,,,,,legal_hold,incident preservation hold,2026-05-15,Retention exception requires review before evidence closure

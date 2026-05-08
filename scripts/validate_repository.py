@@ -121,6 +121,23 @@ REQUIRED_CSV_HEADERS = {
         "status",
         "review_date",
     ],
+    "ai-data-deletion-evidence-register.csv": [
+        "request_id",
+        "system",
+        "processor",
+        "data_subject_or_dataset",
+        "deletion_scope",
+        "requested_at",
+        "due_date",
+        "completed_at",
+        "evidence_reference",
+        "verification_method",
+        "verifier",
+        "status",
+        "retention_exception",
+        "next_review_date",
+        "notes",
+    ],
     "evidence-register.csv": [
         "evidence_id",
         "control_id",
@@ -261,6 +278,33 @@ def validate_risk_register_report_assets() -> None:
             fail(f"{guide_path.relative_to(ROOT)} is missing risk-register report guidance: {required}")
 
 
+def validate_data_deletion_evidence_assets() -> None:
+    script_path = ROOT / "scripts" / "data_deletion_evidence_report.py"
+    guide_path = ROOT / "templates" / "ai-data-deletion-evidence-report.md"
+    register_path = ROOT / "templates" / "ai-data-deletion-evidence-register.csv"
+    sample_path = ROOT / "examples" / "ai-data-deletion-evidence-sample.csv"
+
+    for path in (script_path, guide_path, register_path, sample_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in ("overdue_deletion", "missing_completion_evidence", "unverified_completion", "--fail-on-high"):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing deletion evidence guidance: {required}")
+
+    expected = REQUIRED_CSV_HEADERS["ai-data-deletion-evidence-register.csv"]
+    for path in (register_path, sample_path):
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            rows = list(csv.reader(handle))
+        if not rows:
+            fail(f"{path.relative_to(ROOT)} is empty")
+        if rows[0] != expected:
+            fail(f"{path.relative_to(ROOT)} has unexpected headers")
+    if len(list(csv.reader(sample_path.open("r", encoding="utf-8", newline="")))) < 4:
+        fail(f"{sample_path.relative_to(ROOT)} should include multiple deletion states")
+
+
 def validate_policy_input_shape(path: Path, example: dict[str, object]) -> None:
     required_top_level = ("agent", "tool", "action", "data_classification", "human_approval")
     for field in required_top_level:
@@ -311,6 +355,7 @@ def main() -> int:
         validate_policy_as_code_examples,
         validate_exception_aging_report_assets,
         validate_risk_register_report_assets,
+        validate_data_deletion_evidence_assets,
     ]
     for check in checks:
         check()
