@@ -21,6 +21,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Control catalog | Governance, identity, data, model, agent, vendor, monitoring, and continuity controls |
 | Evidence management | Evidence register, test records, exception tracking, and audit-ready documentation |
 | Control testing | Evidence packs and examples for AI control design and operating-effectiveness review |
+| Evaluation evidence | Release-readiness reporting for AI evaluation suites, dataset lineage, security cases, human review, pass rates, and stale evidence |
 | Exception management | Aging report for expired, expiring, missing-expiration, and inconsistent AI governance exceptions |
 | Data deletion evidence | Register and report for prompt, output, file, embedding, log, vector-store, and third-party deletion proof |
 | Vendor due diligence | AI procurement scoring, vendor questionnaire, data handling, security, model controls, compliance, and continuity |
@@ -69,6 +70,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 19. Review deletion evidence gaps with `scripts/data_deletion_evidence_report.py`.
 20. Review provider, subprocessor, and critical AI dependency gaps with `scripts/third_party_dependency_report.py`.
 21. Review tabletop evidence gaps with `scripts/tabletop_evidence_report.py`.
+22. Review AI evaluation evidence readiness with `scripts/evaluation_evidence_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -94,6 +96,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-control-evidence-raci.md` | Assign control ownership and evidence accountability across AI governance roles |
 | `templates/ai-control-test-evidence-pack.md` | Package AI control test objectives, population, sample, evidence inventory, exceptions, remediation, and reviewer conclusions |
 | `templates/ai-control-test-evidence-examples.csv` | Spreadsheet-friendly examples for operating-effectiveness evidence packs across agent tools, prompt injection, RAG boundaries, monitoring, and continuity |
+| `templates/ai-evaluation-evidence-register.csv` | Track AI evaluation suites, dataset lineage, model/prompt/index versions, pass rates, failures, security/bias/citation coverage, human review, and release decisions |
+| `templates/ai-evaluation-evidence-report.md` | Operating guide for reviewing stale, incomplete, low-scoring, or release-blocking AI evaluation evidence |
 | `templates/ai-red-team-test-plan.md` | Plan AI red-team scenarios, evidence capture, pass/fail criteria, and release decisions |
 | `templates/ai-risk-register-report.md` | Operating guide for summarizing residual AI risk by theme, owner, and review-date status |
 | `templates/ai-incident-severity-matrix.md` | Classify AI incidents by data exposure, tool misuse, output harm, identity impact, continuity, and escalation triggers |
@@ -121,9 +125,11 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `scripts/data_deletion_evidence_report.py` | Generate Markdown or JSON reports for AI data deletion evidence gaps and processor review queues |
 | `scripts/third_party_dependency_report.py` | Generate Markdown or JSON reports for provider, subprocessor, assurance, exit-plan, and continuity gaps |
 | `scripts/tabletop_evidence_report.py` | Generate Markdown or JSON reports for tabletop exercise evidence gaps, owner queues, and release-blocking readiness issues |
+| `scripts/evaluation_evidence_report.py` | Generate Markdown or JSON reports for AI evaluation evidence readiness, stale evidence, missing coverage, release-blocking failures, and owner queues |
 | `examples/ai-data-deletion-evidence-sample.csv` | Sample deletion evidence register covering overdue, verified, missing-evidence, and retention-exception states |
 | `examples/ai-third-party-dependency-sample.csv` | Sample third-party AI dependency register covering missing DPA, subprocessor transparency, stale assurance, and continuity gaps |
 | `examples/ai-tabletop-exercise-evidence-sample.csv` | Sample tabletop evidence register covering provider fallback, prompt injection, data exposure, and agent tool misuse scenarios |
+| `examples/ai-evaluation-evidence-sample.csv` | Sample evaluation evidence register covering RAG, security, citation, human review, low pass-rate, and stale evidence cases |
 | `examples/ai-exception-register-sample.csv` | Sample exception register for report testing and governance workshop demonstrations |
 | `examples/edtech-ai-assistant-privacy-review.md` | Example privacy review for a student-facing AI assistant pilot |
 
