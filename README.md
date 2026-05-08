@@ -30,6 +30,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
 | Agentic risk mapping | Agentic failure modes mapped to controls, evidence, release gates, monitoring signals, and owner roles |
 | OWASP LLM 2025 mapping | OWASP LLM application risks mapped to toolkit controls, evidence, release gates, monitoring signals, and owner queues |
+| NIST AI RMF crosswalk | Govern, Map, Measure, and Manage functions mapped to controls, evidence, review cadence, and owner roles |
 | Access recertification | User, administrator, service account, API key, break-glass, and agent tool permission review |
 | Red-team readiness | Scenario-based AI red-team test planning, evidence capture, and release decisions |
 | Incident response | AI-specific incident severity classification, escalation triggers, and evidence preservation |
@@ -79,6 +80,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 24. Review AI access recertification gaps with `scripts/access_recertification_report.py`.
 25. Review AI incident evidence gaps with `scripts/incident_evidence_report.py`.
 26. Map OWASP LLM 2025 risks to governance controls with `scripts/owasp_llm_mapping_report.py`.
+27. Map NIST AI RMF functions to toolkit evidence with `scripts/nist_ai_rmf_crosswalk_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -133,6 +135,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `controls/agentic-risk-control-mapping.csv` | Spreadsheet-friendly companion for agentic risk-to-control mapping |
 | `controls/owasp-llm-2025-control-mapping.md` | Map OWASP LLM 2025 risks to toolkit controls, evidence expectations, release gates, monitoring signals, and owner roles |
 | `controls/owasp-llm-2025-control-mapping.csv` | Spreadsheet-friendly companion for OWASP LLM 2025 governance mapping |
+| `controls/nist-ai-rmf-control-crosswalk.md` | Map NIST AI RMF Govern, Map, Measure, and Manage functions to toolkit controls, evidence, cadence, and owner roles |
+| `controls/nist-ai-rmf-control-crosswalk.csv` | Spreadsheet-friendly companion for NIST AI RMF evidence crosswalks |
 | `policies/ai-log-retention-policy.md` | Define retention expectations for prompts, outputs, embeddings, tool calls, and security events |
 | `playbooks/ai-data-leak-triage.md` | Triage suspected AI data exposure through prompts, outputs, logs, embeddings, or providers |
 | `playbooks/agentic-tool-misuse-response.md` | Contain and investigate incorrect or unauthorized agent tool actions |
@@ -146,6 +150,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `scripts/access_recertification_report.py` | Generate Markdown or JSON reports for AI access recertification gaps, privileged access, service accounts, API tokens, break-glass access, and high-impact agent tool permissions |
 | `scripts/incident_evidence_report.py` | Generate Markdown or JSON reports for AI incident evidence gaps, privacy review, containment proof, log preservation, timelines, communications, root cause, and remediation queues |
 | `scripts/owasp_llm_mapping_report.py` | Generate Markdown or JSON summaries of OWASP LLM 2025 risk-to-control coverage, release gates, monitoring signals, and owner queues |
+| `scripts/nist_ai_rmf_crosswalk_report.py` | Generate Markdown or JSON summaries of NIST AI RMF function coverage, control coverage, evidence cadence, and owner queues |
 | `examples/ai-data-deletion-evidence-sample.csv` | Sample deletion evidence register covering overdue, verified, missing-evidence, and retention-exception states |
 | `examples/ai-access-recertification-sample.csv` | Sample AI access recertification register covering privileged access, unowned tokens, separated identities, break-glass access, and current audit roles |
 | `examples/ai-access-recertification-report.json` | Example machine-readable output from the access recertification report |
