@@ -292,6 +292,16 @@ REQUIRED_CSV_HEADERS = {
         "review_cadence",
         "owner_role",
     ],
+    "ai-red-team-finding-taxonomy.csv": [
+        "finding_type",
+        "risk_theme",
+        "severity_floor",
+        "example_signal",
+        "control_ids",
+        "required_evidence",
+        "release_decision",
+        "owner_role",
+    ],
 }
 
 
@@ -482,6 +492,62 @@ def validate_nist_ai_rmf_crosswalk_assets() -> None:
         for control_id in [item.strip() for item in row["control_ids"].split(";") if item.strip()]:
             if control_id not in catalog_ids:
                 fail(f"{crosswalk_path.relative_to(ROOT)} row {index} maps to unknown control ID: {control_id}")
+
+
+def validate_red_team_taxonomy_assets() -> None:
+    script_path = ROOT / "scripts" / "red_team_taxonomy_report.py"
+    guide_path = ROOT / "controls" / "ai-red-team-finding-taxonomy.md"
+    taxonomy_path = ROOT / "controls" / "ai-red-team-finding-taxonomy.csv"
+    json_report_path = ROOT / "examples" / "ai-red-team-taxonomy-report.json"
+
+    for path in (script_path, guide_path, taxonomy_path, json_report_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in ("severity_floor", "release_decision", "--fail-on-unowned-high"):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing taxonomy guidance: {required}")
+
+    script_text = read_text(script_path)
+    for required in ("release_holds", "owner_queues", "--fail-on-unowned-high"):
+        if required not in script_text:
+            fail(f"{script_path.relative_to(ROOT)} is missing report behavior: {required}")
+
+    with taxonomy_path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.reader(handle)
+        header = next(reader, [])
+    if header != REQUIRED_CSV_HEADERS["ai-red-team-finding-taxonomy.csv"]:
+        fail(f"{taxonomy_path.relative_to(ROOT)} has unexpected headers")
+
+    catalog_ids = set(CONTROL_ID_PATTERN.findall(read_text(ROOT / "controls" / "control-catalog.yaml")))
+    with taxonomy_path.open("r", encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    if len(rows) < 8:
+        fail(f"{taxonomy_path.relative_to(ROOT)} should include multiple red-team finding types")
+
+    finding_types = [row["finding_type"] for row in rows]
+    duplicates = sorted({finding_type for finding_type in finding_types if finding_types.count(finding_type) > 1})
+    if duplicates:
+        fail(f"Duplicate red-team finding types found: {', '.join(duplicates)}")
+
+    allowed_severities = {"critical", "high", "medium", "low"}
+    for index, row in enumerate(rows, start=2):
+        missing_fields = [column for column in REQUIRED_CSV_HEADERS["ai-red-team-finding-taxonomy.csv"] if not row[column].strip()]
+        if missing_fields:
+            fail(f"{taxonomy_path.relative_to(ROOT)} row {index} is missing fields: {', '.join(missing_fields)}")
+        if row["severity_floor"] not in allowed_severities:
+            fail(f"{taxonomy_path.relative_to(ROOT)} row {index} has invalid severity floor: {row['severity_floor']}")
+        for control_id in [item.strip() for item in row["control_ids"].split(";") if item.strip()]:
+            if control_id not in catalog_ids:
+                fail(f"{taxonomy_path.relative_to(ROOT)} row {index} maps to unknown control ID: {control_id}")
+
+    json_report = json.loads(read_text(json_report_path))
+    summary = json_report.get("summary", {})
+    if summary.get("finding_types") != len(rows):
+        fail(f"{json_report_path.relative_to(ROOT)} has an unexpected taxonomy count")
+    if len(summary.get("release_holds", [])) < 5:
+        fail(f"{json_report_path.relative_to(ROOT)} should include release-hold finding types")
 
 
 def validate_csv_templates() -> None:
@@ -806,6 +872,7 @@ def main() -> int:
         validate_agentic_risk_control_mapping_assets,
         validate_owasp_llm_2025_mapping_assets,
         validate_nist_ai_rmf_crosswalk_assets,
+        validate_red_team_taxonomy_assets,
         validate_csv_templates,
         validate_policy_as_code_examples,
         validate_exception_aging_report_assets,

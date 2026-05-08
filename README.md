@@ -33,6 +33,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | NIST AI RMF crosswalk | Govern, Map, Measure, and Manage functions mapped to controls, evidence, review cadence, and owner roles |
 | Access recertification | User, administrator, service account, API key, break-glass, and agent tool permission review |
 | Red-team readiness | Scenario-based AI red-team test planning, evidence capture, and release decisions |
+| Red-team taxonomy | Finding classification by risk theme, severity floor, release decision, owner role, and control coverage |
 | Incident response | AI-specific incident severity classification, escalation triggers, and evidence preservation |
 | Incident evidence | Register and report for AI incident timelines, containment evidence, preserved logs, privacy review, communications, and remediation queues |
 | Tabletop evidence | Exercise evidence register and reporting for decision logs, containment, communications, fallback, privacy review, and remediation |
@@ -81,6 +82,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 25. Review AI incident evidence gaps with `scripts/incident_evidence_report.py`.
 26. Map OWASP LLM 2025 risks to governance controls with `scripts/owasp_llm_mapping_report.py`.
 27. Map NIST AI RMF functions to toolkit evidence with `scripts/nist_ai_rmf_crosswalk_report.py`.
+28. Summarize AI red-team finding taxonomy coverage with `scripts/red_team_taxonomy_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -111,6 +113,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-evaluation-evidence-register.csv` | Track AI evaluation suites, dataset lineage, model/prompt/index versions, pass rates, failures, security/bias/citation coverage, human review, and release decisions |
 | `templates/ai-evaluation-evidence-report.md` | Operating guide for reviewing stale, incomplete, low-scoring, or release-blocking AI evaluation evidence |
 | `templates/ai-red-team-test-plan.md` | Plan AI red-team scenarios, evidence capture, pass/fail criteria, and release decisions |
+| `controls/ai-red-team-finding-taxonomy.md` | Classify AI red-team findings by risk theme, severity floor, evidence, release decision, owner role, and control mapping |
+| `controls/ai-red-team-finding-taxonomy.csv` | Spreadsheet-friendly red-team finding taxonomy for dashboards, approval gates, and remediation queues |
 | `templates/ai-risk-register-report.md` | Operating guide for summarizing residual AI risk by theme, owner, and review-date status |
 | `templates/ai-incident-severity-matrix.md` | Classify AI incidents by data exposure, tool misuse, output harm, identity impact, continuity, and escalation triggers |
 | `templates/ai-incident-evidence-register.csv` | Track AI incident timelines, evidence references, data exposure, tool misuse, containment evidence, preserved logs, privacy review, communications, root cause, remediation due dates, and closure status |
@@ -151,6 +155,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `scripts/incident_evidence_report.py` | Generate Markdown or JSON reports for AI incident evidence gaps, privacy review, containment proof, log preservation, timelines, communications, root cause, and remediation queues |
 | `scripts/owasp_llm_mapping_report.py` | Generate Markdown or JSON summaries of OWASP LLM 2025 risk-to-control coverage, release gates, monitoring signals, and owner queues |
 | `scripts/nist_ai_rmf_crosswalk_report.py` | Generate Markdown or JSON summaries of NIST AI RMF function coverage, control coverage, evidence cadence, and owner queues |
+| `scripts/red_team_taxonomy_report.py` | Generate Markdown or JSON summaries of red-team finding severity, release holds, owner queues, and control coverage |
 | `examples/ai-data-deletion-evidence-sample.csv` | Sample deletion evidence register covering overdue, verified, missing-evidence, and retention-exception states |
 | `examples/ai-access-recertification-sample.csv` | Sample AI access recertification register covering privileged access, unowned tokens, separated identities, break-glass access, and current audit roles |
 | `examples/ai-access-recertification-report.json` | Example machine-readable output from the access recertification report |
@@ -162,6 +167,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `examples/ai-exception-register-sample.csv` | Sample exception register for report testing and governance workshop demonstrations |
 | `examples/agentic-risk-control-report.md` | Example Markdown report summarizing agentic risk owner queues, control coverage, release gates, and monitoring signals |
 | `examples/agentic-risk-control-report.json` | Example machine-readable output from the agentic risk control mapping report |
+| `examples/ai-red-team-taxonomy-report.json` | Example machine-readable output from the red-team finding taxonomy report |
 | `examples/edtech-ai-assistant-privacy-review.md` | Example privacy review for a student-facing AI assistant pilot |
 
 ## Suggested Repository Use
