@@ -24,6 +24,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Exception management | Aging report for expired, expiring, missing-expiration, and inconsistent AI governance exceptions |
 | Data deletion evidence | Register and report for prompt, output, file, embedding, log, vector-store, and third-party deletion proof |
 | Vendor due diligence | AI procurement scoring, vendor questionnaire, data handling, security, model controls, compliance, and continuity |
+| Third-party dependency assurance | Provider/subprocessor register, assurance review, DPA status, subprocessor transparency, exit planning, and continuity evidence |
 | Logging and retention | Checklist for prompt, output, embedding, tool-call, and operational log governance |
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
 | Red-team readiness | Scenario-based AI red-team test planning, evidence capture, and release decisions |
@@ -64,6 +65,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 16. Review active exceptions with `scripts/exception_aging_report.py`.
 17. Summarize residual risk and owner review queues with `scripts/risk_register_report.py`.
 18. Review deletion evidence gaps with `scripts/data_deletion_evidence_report.py`.
+19. Review provider, subprocessor, and critical AI dependency gaps with `scripts/third_party_dependency_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -100,6 +102,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-model-card-lite.md` | Capture lightweight model use, limitations, oversight, and risk notes |
 | `templates/ai-procurement-scoring-worksheet.md` | Score AI vendors, hosted models, embedded AI features, and agent platforms before purchase, renewal, or expansion |
 | `templates/ai-procurement-scoring-worksheet.csv` | Spreadsheet-friendly companion for weighted procurement scoring, evidence gaps, and remediation ownership |
+| `templates/ai-third-party-dependency-register.csv` | Track AI providers, subprocessors, critical services, data access, DPA status, assurance evidence, exit plans, and continuity posture |
+| `templates/ai-third-party-dependency-report.md` | Operating guide for reviewing third-party AI dependency gaps before release, renewal, audit, or provider change |
 | `templates/model-provider-exit-plan.md` | Plan provider exit triggers, fallback options, data export, and deletion evidence |
 | `templates/model-provider-change-approval.md` | Review model/provider changes for data handling, quality, safety, RAG behavior, tool use, cost, continuity, and approval routing |
 | `templates/model-monitoring-kpi-register.md` | Define post-approval AI monitoring KPIs, thresholds, evidence sources, owners, and escalation rules |
@@ -110,7 +114,9 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `scripts/exception_aging_report.py` | Generate Markdown or JSON reports for expired, expiring, missing-expiration, and inconsistent AI exceptions |
 | `scripts/risk_register_report.py` | Generate Markdown or JSON summaries of residual AI risk, owner queues, review dates, and theme-level exposure |
 | `scripts/data_deletion_evidence_report.py` | Generate Markdown or JSON reports for AI data deletion evidence gaps and processor review queues |
+| `scripts/third_party_dependency_report.py` | Generate Markdown or JSON reports for provider, subprocessor, assurance, exit-plan, and continuity gaps |
 | `examples/ai-data-deletion-evidence-sample.csv` | Sample deletion evidence register covering overdue, verified, missing-evidence, and retention-exception states |
+| `examples/ai-third-party-dependency-sample.csv` | Sample third-party AI dependency register covering missing DPA, subprocessor transparency, stale assurance, and continuity gaps |
 | `examples/ai-exception-register-sample.csv` | Sample exception register for report testing and governance workshop demonstrations |
 | `examples/edtech-ai-assistant-privacy-review.md` | Example privacy review for a student-facing AI assistant pilot |
 
