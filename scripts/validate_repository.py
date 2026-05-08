@@ -630,6 +630,37 @@ def validate_risk_register_report_assets() -> None:
             fail(f"{guide_path.relative_to(ROOT)} is missing risk-register report guidance: {required}")
 
 
+def validate_evidence_quality_report_assets() -> None:
+    script_path = ROOT / "scripts" / "evidence_quality_report.py"
+    guide_path = ROOT / "templates" / "ai-evidence-quality-report.md"
+    sample_path = ROOT / "examples" / "evidence-register-quality-sample.csv"
+
+    for path in (script_path, guide_path, sample_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in ("--fail-on-high", "Freshness", "Owner"):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing evidence-quality guidance: {required}")
+
+    script_text = read_text(script_path)
+    for required in ("owner_queues", "next_due is overdue", "--fail-on-high"):
+        if required not in script_text:
+            fail(f"{script_path.relative_to(ROOT)} is missing evidence-quality behavior: {required}")
+
+    expected = REQUIRED_CSV_HEADERS["evidence-register.csv"]
+    for path in (ROOT / "templates" / "evidence-register.csv", sample_path):
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            rows = list(csv.reader(handle))
+        if not rows:
+            fail(f"{path.relative_to(ROOT)} is empty")
+        if rows[0] != expected:
+            fail(f"{path.relative_to(ROOT)} has unexpected headers")
+    if len(list(csv.reader(sample_path.open("r", encoding="utf-8", newline="")))) < 5:
+        fail(f"{sample_path.relative_to(ROOT)} should include multiple evidence quality states")
+
+
 def validate_data_deletion_evidence_assets() -> None:
     script_path = ROOT / "scripts" / "data_deletion_evidence_report.py"
     guide_path = ROOT / "templates" / "ai-data-deletion-evidence-report.md"
@@ -877,6 +908,7 @@ def main() -> int:
         validate_policy_as_code_examples,
         validate_exception_aging_report_assets,
         validate_risk_register_report_assets,
+        validate_evidence_quality_report_assets,
         validate_data_deletion_evidence_assets,
         validate_third_party_dependency_assets,
         validate_tabletop_evidence_assets,
