@@ -64,6 +64,30 @@ REQUIRED_CSV_HEADERS = {
         "next_review_date",
         "notes",
     ],
+    "ai-incident-evidence-register.csv": [
+        "incident_id",
+        "system",
+        "incident_type",
+        "severity",
+        "detected_at",
+        "reported_at",
+        "incident_owner",
+        "containment_owner",
+        "data_exposure",
+        "tool_misuse",
+        "model_or_provider",
+        "affected_users",
+        "evidence_reference",
+        "timeline_complete",
+        "containment_evidence",
+        "logs_preserved",
+        "privacy_reviewed",
+        "communications_prepared",
+        "root_cause_status",
+        "remediation_due",
+        "status",
+        "notes",
+    ],
     "ai-control-test-schedule.csv": [
         "control_id",
         "control_name",
@@ -582,6 +606,46 @@ def validate_access_recertification_assets() -> None:
         fail(f"{json_report_path.relative_to(ROOT)} should include high-severity access gaps")
 
 
+def validate_incident_evidence_assets() -> None:
+    script_path = ROOT / "scripts" / "incident_evidence_report.py"
+    guide_path = ROOT / "templates" / "ai-incident-evidence-report.md"
+    register_path = ROOT / "templates" / "ai-incident-evidence-register.csv"
+    sample_path = ROOT / "examples" / "ai-incident-evidence-sample.csv"
+    json_report_path = ROOT / "examples" / "ai-incident-evidence-report.json"
+
+    for path in (script_path, guide_path, register_path, sample_path, json_report_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in (
+        "data_exposure_privacy_review_missing",
+        "containment_evidence_missing",
+        "tool_misuse_logs_missing",
+        "--fail-on-high",
+    ):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing incident evidence guidance: {required}")
+
+    expected = REQUIRED_CSV_HEADERS["ai-incident-evidence-register.csv"]
+    for path in (register_path, sample_path):
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            rows = list(csv.reader(handle))
+        if not rows:
+            fail(f"{path.relative_to(ROOT)} is empty")
+        if rows[0] != expected:
+            fail(f"{path.relative_to(ROOT)} has unexpected headers")
+    if len(list(csv.reader(sample_path.open("r", encoding="utf-8", newline="")))) < 5:
+        fail(f"{sample_path.relative_to(ROOT)} should include multiple incident evidence states")
+
+    json_report = json.loads(read_text(json_report_path))
+    summary = json_report.get("summary", {})
+    if summary.get("total") != 6:
+        fail(f"{json_report_path.relative_to(ROOT)} has an unexpected total incident count")
+    if summary.get("high", 0) < 3:
+        fail(f"{json_report_path.relative_to(ROOT)} should include high-severity incident gaps")
+
+
 def validate_policy_input_shape(path: Path, example: dict[str, object]) -> None:
     required_top_level = ("agent", "tool", "action", "data_classification", "human_approval")
     for field in required_top_level:
@@ -638,6 +702,7 @@ def main() -> int:
         validate_tabletop_evidence_assets,
         validate_evaluation_evidence_assets,
         validate_access_recertification_assets,
+        validate_incident_evidence_assets,
     ]
     for check in checks:
         check()
