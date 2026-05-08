@@ -20,6 +20,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Risk management | AI risk tiering, AI risk register, risk-register reporting, control ownership, inherent/residual scoring, and decision tracking |
 | Control catalog | Governance, identity, data, model, agent, vendor, monitoring, and continuity controls |
 | Evidence management | Evidence register, test records, exception tracking, and audit-ready documentation |
+| Evidence quality | Evidence freshness, ownership, source, cadence, status, and owner-review queues |
 | Control testing | Evidence packs and examples for AI control design and operating-effectiveness review |
 | Evaluation evidence | Release-readiness reporting for AI evaluation suites, dataset lineage, security cases, human review, pass rates, and stale evidence |
 | Exception management | Aging report for expired, expiring, missing-expiration, and inconsistent AI governance exceptions |
@@ -83,6 +84,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 26. Map OWASP LLM 2025 risks to governance controls with `scripts/owasp_llm_mapping_report.py`.
 27. Map NIST AI RMF functions to toolkit evidence with `scripts/nist_ai_rmf_crosswalk_report.py`.
 28. Summarize AI red-team finding taxonomy coverage with `scripts/red_team_taxonomy_report.py`.
+29. Review evidence quality and freshness with `scripts/evidence_quality_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -110,6 +112,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-control-evidence-raci.md` | Assign control ownership and evidence accountability across AI governance roles |
 | `templates/ai-control-test-evidence-pack.md` | Package AI control test objectives, population, sample, evidence inventory, exceptions, remediation, and reviewer conclusions |
 | `templates/ai-control-test-evidence-examples.csv` | Spreadsheet-friendly examples for operating-effectiveness evidence packs across agent tools, prompt injection, RAG boundaries, monitoring, and continuity |
+| `templates/ai-evidence-quality-report.md` | Operating guide for reviewing stale, missing, expired, unowned, or incomplete AI governance evidence |
 | `templates/ai-evaluation-evidence-register.csv` | Track AI evaluation suites, dataset lineage, model/prompt/index versions, pass rates, failures, security/bias/citation coverage, human review, and release decisions |
 | `templates/ai-evaluation-evidence-report.md` | Operating guide for reviewing stale, incomplete, low-scoring, or release-blocking AI evaluation evidence |
 | `templates/ai-red-team-test-plan.md` | Plan AI red-team scenarios, evidence capture, pass/fail criteria, and release decisions |
@@ -156,6 +159,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `scripts/owasp_llm_mapping_report.py` | Generate Markdown or JSON summaries of OWASP LLM 2025 risk-to-control coverage, release gates, monitoring signals, and owner queues |
 | `scripts/nist_ai_rmf_crosswalk_report.py` | Generate Markdown or JSON summaries of NIST AI RMF function coverage, control coverage, evidence cadence, and owner queues |
 | `scripts/red_team_taxonomy_report.py` | Generate Markdown or JSON summaries of red-team finding severity, release holds, owner queues, and control coverage |
+| `scripts/evidence_quality_report.py` | Generate Markdown or JSON reports for evidence ownership, freshness, overdue items, cadence gaps, and owner queues |
 | `examples/ai-data-deletion-evidence-sample.csv` | Sample deletion evidence register covering overdue, verified, missing-evidence, and retention-exception states |
 | `examples/ai-access-recertification-sample.csv` | Sample AI access recertification register covering privileged access, unowned tokens, separated identities, break-glass access, and current audit roles |
 | `examples/ai-access-recertification-report.json` | Example machine-readable output from the access recertification report |
@@ -168,6 +172,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `examples/agentic-risk-control-report.md` | Example Markdown report summarizing agentic risk owner queues, control coverage, release gates, and monitoring signals |
 | `examples/agentic-risk-control-report.json` | Example machine-readable output from the agentic risk control mapping report |
 | `examples/ai-red-team-taxonomy-report.json` | Example machine-readable output from the red-team finding taxonomy report |
+| `examples/evidence-register-quality-sample.csv` | Sample evidence register with current, stale, expired, required, and owner-missing evidence states |
 | `examples/edtech-ai-assistant-privacy-review.md` | Example privacy review for a student-facing AI assistant pilot |
 
 ## Suggested Repository Use
