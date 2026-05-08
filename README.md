@@ -29,6 +29,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Logging and retention | Checklist for prompt, output, embedding, tool-call, and operational log governance |
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
 | Agentic risk mapping | Agentic failure modes mapped to controls, evidence, release gates, monitoring signals, and owner roles |
+| Access recertification | User, administrator, service account, API key, break-glass, and agent tool permission review |
 | Red-team readiness | Scenario-based AI red-team test planning, evidence capture, and release decisions |
 | Incident response | AI-specific incident severity classification, escalation triggers, and evidence preservation |
 | Tabletop evidence | Exercise evidence register and reporting for decision logs, containment, communications, fallback, privacy review, and remediation |
@@ -73,6 +74,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 21. Review tabletop evidence gaps with `scripts/tabletop_evidence_report.py`.
 22. Review AI evaluation evidence readiness with `scripts/evaluation_evidence_report.py`.
 23. Map agentic failure modes to controls and release gates with `scripts/agentic_risk_control_report.py`.
+24. Review AI access recertification gaps with `scripts/access_recertification_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -93,6 +95,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-data-deletion-evidence-register.csv` | Track AI deletion requests, processors, scopes, due dates, completion evidence, verification, and retention exceptions |
 | `templates/ai-data-deletion-evidence-report.md` | Operating guide for reporting overdue deletions, missing evidence, unverified completions, and retention-exception review queues |
 | `templates/ai-access-review.md` | Review user, administrator, service account, API key, and agent tool permissions |
+| `templates/ai-access-recertification-register.csv` | Track AI access assignments, privileged roles, service accounts, tokens, tool permissions, MFA, review dates, and recertification decisions |
+| `templates/ai-access-recertification-report.md` | Operating guide for reviewing stale access, unowned tokens, separated users, break-glass approval, and high-impact agent tool permissions |
 | `templates/human-approval-matrix.md` | Define when AI-assisted actions require review, approval, or dual approval |
 | `templates/board-ai-security-assurance-checklist.md` | Executive assurance checklist for approving high-impact AI systems |
 | `templates/ai-control-evidence-raci.md` | Assign control ownership and evidence accountability across AI governance roles |
@@ -131,7 +135,10 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `scripts/tabletop_evidence_report.py` | Generate Markdown or JSON reports for tabletop exercise evidence gaps, owner queues, and release-blocking readiness issues |
 | `scripts/evaluation_evidence_report.py` | Generate Markdown or JSON reports for AI evaluation evidence readiness, stale evidence, missing coverage, release-blocking failures, and owner queues |
 | `scripts/agentic_risk_control_report.py` | Generate Markdown or JSON summaries of agentic risk mappings, owner queues, control coverage, release gates, and monitoring signals |
+| `scripts/access_recertification_report.py` | Generate Markdown or JSON reports for AI access recertification gaps, privileged access, service accounts, API tokens, break-glass access, and high-impact agent tool permissions |
 | `examples/ai-data-deletion-evidence-sample.csv` | Sample deletion evidence register covering overdue, verified, missing-evidence, and retention-exception states |
+| `examples/ai-access-recertification-sample.csv` | Sample AI access recertification register covering privileged access, unowned tokens, separated identities, break-glass access, and current audit roles |
+| `examples/ai-access-recertification-report.json` | Example machine-readable output from the access recertification report |
 | `examples/ai-third-party-dependency-sample.csv` | Sample third-party AI dependency register covering missing DPA, subprocessor transparency, stale assurance, and continuity gaps |
 | `examples/ai-tabletop-exercise-evidence-sample.csv` | Sample tabletop evidence register covering provider fallback, prompt injection, data exposure, and agent tool misuse scenarios |
 | `examples/ai-evaluation-evidence-sample.csv` | Sample evaluation evidence register covering RAG, security, citation, human review, low pass-rate, and stale evidence cases |

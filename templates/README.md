@@ -6,6 +6,7 @@ This index lists the reusable governance templates included in the toolkit.
 | --- | --- |
 | [Agentic Tool Review](agentic-tool-review.md) | Use this template before allowing an AI agent or assistant to invoke tools, APIs, scripts, data stores, workflow actions, or external services. |
 | [AI Access Review](ai-access-review.md) | Use this template to review user, administrator, service account, and tool permissions for AI systems. |
+| [AI Access Recertification Report](ai-access-recertification-report.md) | Use this report to review stale access, privileged roles, service accounts, API keys, break-glass access, and high-impact agent tool permissions. |
 | [AI Change Impact Assessment](ai-change-impact-assessment.md) | Use this template when an AI system, model, provider, integration, data source, or workflow changes after approval. |
 | [AI Control Evidence RACI](ai-control-evidence-raci.md) | Use this template to assign accountability for AI security controls and the evidence needed to prove that those controls are operating. It is intended for governance reviews, internal audit preparation, and operating-model design. |
 | [AI Control Test Evidence Pack](ai-control-test-evidence-pack.md) | Use this pack to document test objective, population, sample, evidence inventory, result assessment, exceptions, and remediation for AI control operating-effectiveness reviews. |
