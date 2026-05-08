@@ -17,7 +17,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Area | Artifacts |
 | --- | --- |
 | AI system intake | Initial AI use-case review, data classification, deployment model, ownership, and approval path |
-| Risk management | AI risk tiering, AI risk register, control ownership, inherent/residual scoring, and decision tracking |
+| Risk management | AI risk tiering, AI risk register, risk-register reporting, control ownership, inherent/residual scoring, and decision tracking |
 | Control catalog | Governance, identity, data, model, agent, vendor, monitoring, and continuity controls |
 | Evidence management | Evidence register, test records, exception tracking, and audit-ready documentation |
 | Control testing | Evidence packs and examples for AI control design and operating-effectiveness review |
@@ -61,6 +61,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 14. Track production health with `templates/model-monitoring-kpi-register.md`.
 15. Package control test evidence with `templates/ai-control-test-evidence-pack.md`.
 16. Review active exceptions with `scripts/exception_aging_report.py`.
+17. Summarize residual risk and owner review queues with `scripts/risk_register_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -85,6 +86,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-control-test-evidence-pack.md` | Package AI control test objectives, population, sample, evidence inventory, exceptions, remediation, and reviewer conclusions |
 | `templates/ai-control-test-evidence-examples.csv` | Spreadsheet-friendly examples for operating-effectiveness evidence packs across agent tools, prompt injection, RAG boundaries, monitoring, and continuity |
 | `templates/ai-red-team-test-plan.md` | Plan AI red-team scenarios, evidence capture, pass/fail criteria, and release decisions |
+| `templates/ai-risk-register-report.md` | Operating guide for summarizing residual AI risk by theme, owner, and review-date status |
 | `templates/ai-incident-severity-matrix.md` | Classify AI incidents by data exposure, tool misuse, output harm, identity impact, continuity, and escalation triggers |
 | `templates/prompt-injection-test-record.md` | Record direct and indirect prompt injection test cases, outcomes, and remediation |
 | `templates/ai-agent-tool-inventory.csv` | Track agent tools, environments, permissions, data access, owners, and review dates |
@@ -102,6 +104,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `playbooks/ai-data-leak-triage.md` | Triage suspected AI data exposure through prompts, outputs, logs, embeddings, or providers |
 | `playbooks/agentic-tool-misuse-response.md` | Contain and investigate incorrect or unauthorized agent tool actions |
 | `scripts/exception_aging_report.py` | Generate Markdown or JSON reports for expired, expiring, missing-expiration, and inconsistent AI exceptions |
+| `scripts/risk_register_report.py` | Generate Markdown or JSON summaries of residual AI risk, owner queues, review dates, and theme-level exposure |
 | `examples/ai-exception-register-sample.csv` | Sample exception register for report testing and governance workshop demonstrations |
 | `examples/edtech-ai-assistant-privacy-review.md` | Example privacy review for a student-facing AI assistant pilot |
 
