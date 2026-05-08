@@ -2,6 +2,8 @@
 
 This mapping translates common AI and LLM risk themes into practical governance controls. It is not a formal certification mapping.
 
+For tool-enabled or autonomous workflows, also use `agentic-risk-control-mapping.csv` and `agentic-risk-control-mapping.md`. That mapping expands agentic failure modes into required evidence, minimum tests, release gates, monitoring signals, and owner roles.
+
 | Risk Theme | Practical Control Response | Example Control IDs |
 | --- | --- | --- |
 | Prompt injection | Adversarial prompt testing, output validation, tool-use boundaries, incident playbooks | `AI-SEC-001`, `AI-AGT-001` |
