@@ -22,6 +22,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Evidence management | Evidence register, test records, exception tracking, and audit-ready documentation |
 | Control testing | Evidence packs and examples for AI control design and operating-effectiveness review |
 | Exception management | Aging report for expired, expiring, missing-expiration, and inconsistent AI governance exceptions |
+| Data deletion evidence | Register and report for prompt, output, file, embedding, log, vector-store, and third-party deletion proof |
 | Vendor due diligence | AI procurement scoring, vendor questionnaire, data handling, security, model controls, compliance, and continuity |
 | Logging and retention | Checklist for prompt, output, embedding, tool-call, and operational log governance |
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
@@ -62,6 +63,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 15. Package control test evidence with `templates/ai-control-test-evidence-pack.md`.
 16. Review active exceptions with `scripts/exception_aging_report.py`.
 17. Summarize residual risk and owner review queues with `scripts/risk_register_report.py`.
+18. Review deletion evidence gaps with `scripts/data_deletion_evidence_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -79,6 +81,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-risk-tiering-decision-record.md` | Classify AI systems into risk tiers, set required control baselines, define approval routes, and record residual-risk decisions |
 | `templates/ai-system-decommissioning-checklist.md` | Retire AI systems safely by handling data, credentials, vector stores, logs, vendor access, integrations, evidence, and residual risk |
 | `templates/ai-data-flow-record.md` | Document AI data sources, processing steps, destinations, classifications, and controls |
+| `templates/ai-data-deletion-evidence-register.csv` | Track AI deletion requests, processors, scopes, due dates, completion evidence, verification, and retention exceptions |
+| `templates/ai-data-deletion-evidence-report.md` | Operating guide for reporting overdue deletions, missing evidence, unverified completions, and retention-exception review queues |
 | `templates/ai-access-review.md` | Review user, administrator, service account, API key, and agent tool permissions |
 | `templates/human-approval-matrix.md` | Define when AI-assisted actions require review, approval, or dual approval |
 | `templates/board-ai-security-assurance-checklist.md` | Executive assurance checklist for approving high-impact AI systems |
@@ -105,6 +109,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `playbooks/agentic-tool-misuse-response.md` | Contain and investigate incorrect or unauthorized agent tool actions |
 | `scripts/exception_aging_report.py` | Generate Markdown or JSON reports for expired, expiring, missing-expiration, and inconsistent AI exceptions |
 | `scripts/risk_register_report.py` | Generate Markdown or JSON summaries of residual AI risk, owner queues, review dates, and theme-level exposure |
+| `scripts/data_deletion_evidence_report.py` | Generate Markdown or JSON reports for AI data deletion evidence gaps and processor review queues |
+| `examples/ai-data-deletion-evidence-sample.csv` | Sample deletion evidence register covering overdue, verified, missing-evidence, and retention-exception states |
 | `examples/ai-exception-register-sample.csv` | Sample exception register for report testing and governance workshop demonstrations |
 | `examples/edtech-ai-assistant-privacy-review.md` | Example privacy review for a student-facing AI assistant pilot |
 
