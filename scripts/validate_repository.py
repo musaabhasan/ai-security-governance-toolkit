@@ -273,6 +273,16 @@ REQUIRED_CSV_HEADERS = {
         "status",
         "notes",
     ],
+    "owasp-llm-2025-control-mapping.csv": [
+        "owasp_id",
+        "risk_name",
+        "governance_intent",
+        "control_ids",
+        "required_evidence",
+        "release_gate",
+        "monitoring_signal",
+        "owner_role",
+    ],
 }
 
 
@@ -371,6 +381,53 @@ def validate_agentic_risk_control_mapping_assets() -> None:
     json_report = json.loads(read_text(json_report_path))
     if json_report.get("summary", {}).get("mapped_risk_themes") != len(rows):
         fail(f"{json_report_path.relative_to(ROOT)} has an unexpected mapped risk count")
+
+
+def validate_owasp_llm_2025_mapping_assets() -> None:
+    script_path = ROOT / "scripts" / "owasp_llm_mapping_report.py"
+    guide_path = ROOT / "controls" / "owasp-llm-2025-control-mapping.md"
+    mapping_path = ROOT / "controls" / "owasp-llm-2025-control-mapping.csv"
+
+    for path in (script_path, guide_path, mapping_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in ("OWASP Top 10 for LLM Applications 2025", "LLM10:2025", "--fail-on-missing-gate"):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing OWASP LLM mapping guidance: {required}")
+
+    script_text = read_text(script_path)
+    for required in ("--fail-on-missing-gate", "total_risks", "control_coverage"):
+        if required not in script_text:
+            fail(f"{script_path.relative_to(ROOT)} is missing report behavior: {required}")
+
+    catalog_ids = set(CONTROL_ID_PATTERN.findall(read_text(ROOT / "controls" / "control-catalog.yaml")))
+    with mapping_path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.reader(handle)
+        header = next(reader, [])
+    if header != REQUIRED_CSV_HEADERS["owasp-llm-2025-control-mapping.csv"]:
+        fail(f"{mapping_path.relative_to(ROOT)} has unexpected headers")
+
+    with mapping_path.open("r", encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    if len(rows) != 10:
+        fail(f"{mapping_path.relative_to(ROOT)} must include the 10 OWASP LLM 2025 risks")
+
+    expected_ids = {f"LLM{index:02d}:2025" for index in range(1, 11)}
+    actual_ids = {row["owasp_id"] for row in rows}
+    if actual_ids != expected_ids:
+        missing = sorted(expected_ids - actual_ids)
+        extra = sorted(actual_ids - expected_ids)
+        fail(f"{mapping_path.relative_to(ROOT)} has unexpected OWASP risk IDs; missing={missing}; extra={extra}")
+
+    for row in rows:
+        missing_fields = [column for column in REQUIRED_CSV_HEADERS["owasp-llm-2025-control-mapping.csv"] if not row[column].strip()]
+        if missing_fields:
+            fail(f"{row['owasp_id']} is missing required mapping fields: {', '.join(missing_fields)}")
+        for control_id in [item.strip() for item in row["control_ids"].split(";") if item.strip()]:
+            if control_id not in catalog_ids:
+                fail(f"{row['owasp_id']} maps to unknown control ID: {control_id}")
 
 
 def validate_csv_templates() -> None:
@@ -693,6 +750,7 @@ def main() -> int:
         validate_template_index,
         validate_control_catalog,
         validate_agentic_risk_control_mapping_assets,
+        validate_owasp_llm_2025_mapping_assets,
         validate_csv_templates,
         validate_policy_as_code_examples,
         validate_exception_aging_report_assets,
