@@ -29,6 +29,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Logging and retention | Checklist for prompt, output, embedding, tool-call, and operational log governance |
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
 | Agentic risk mapping | Agentic failure modes mapped to controls, evidence, release gates, monitoring signals, and owner roles |
+| OWASP LLM 2025 mapping | OWASP LLM application risks mapped to toolkit controls, evidence, release gates, monitoring signals, and owner queues |
 | Access recertification | User, administrator, service account, API key, break-glass, and agent tool permission review |
 | Red-team readiness | Scenario-based AI red-team test planning, evidence capture, and release decisions |
 | Incident response | AI-specific incident severity classification, escalation triggers, and evidence preservation |
@@ -77,6 +78,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 23. Map agentic failure modes to controls and release gates with `scripts/agentic_risk_control_report.py`.
 24. Review AI access recertification gaps with `scripts/access_recertification_report.py`.
 25. Review AI incident evidence gaps with `scripts/incident_evidence_report.py`.
+26. Map OWASP LLM 2025 risks to governance controls with `scripts/owasp_llm_mapping_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -129,6 +131,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/model-monitoring-kpi-register.csv` | Spreadsheet-friendly companion for model monitoring KPI tracking and review records |
 | `controls/agentic-risk-control-mapping.md` | Map agentic AI failure modes to practical controls, evidence, release gates, monitoring signals, and owner roles |
 | `controls/agentic-risk-control-mapping.csv` | Spreadsheet-friendly companion for agentic risk-to-control mapping |
+| `controls/owasp-llm-2025-control-mapping.md` | Map OWASP LLM 2025 risks to toolkit controls, evidence expectations, release gates, monitoring signals, and owner roles |
+| `controls/owasp-llm-2025-control-mapping.csv` | Spreadsheet-friendly companion for OWASP LLM 2025 governance mapping |
 | `policies/ai-log-retention-policy.md` | Define retention expectations for prompts, outputs, embeddings, tool calls, and security events |
 | `playbooks/ai-data-leak-triage.md` | Triage suspected AI data exposure through prompts, outputs, logs, embeddings, or providers |
 | `playbooks/agentic-tool-misuse-response.md` | Contain and investigate incorrect or unauthorized agent tool actions |
@@ -141,6 +145,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `scripts/agentic_risk_control_report.py` | Generate Markdown or JSON summaries of agentic risk mappings, owner queues, control coverage, release gates, and monitoring signals |
 | `scripts/access_recertification_report.py` | Generate Markdown or JSON reports for AI access recertification gaps, privileged access, service accounts, API tokens, break-glass access, and high-impact agent tool permissions |
 | `scripts/incident_evidence_report.py` | Generate Markdown or JSON reports for AI incident evidence gaps, privacy review, containment proof, log preservation, timelines, communications, root cause, and remediation queues |
+| `scripts/owasp_llm_mapping_report.py` | Generate Markdown or JSON summaries of OWASP LLM 2025 risk-to-control coverage, release gates, monitoring signals, and owner queues |
 | `examples/ai-data-deletion-evidence-sample.csv` | Sample deletion evidence register covering overdue, verified, missing-evidence, and retention-exception states |
 | `examples/ai-access-recertification-sample.csv` | Sample AI access recertification register covering privileged access, unowned tokens, separated identities, break-glass access, and current audit roles |
 | `examples/ai-access-recertification-report.json` | Example machine-readable output from the access recertification report |
