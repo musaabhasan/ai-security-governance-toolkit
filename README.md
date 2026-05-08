@@ -23,6 +23,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Vendor due diligence | AI vendor questionnaire for data handling, security, model controls, compliance, and continuity |
 | Logging and retention | Checklist for prompt, output, embedding, tool-call, and operational log governance |
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
+| Red-team readiness | Scenario-based AI red-team test planning, evidence capture, and release decisions |
 | EdTech example | AI assistant governance profile for learning platforms and student-facing workflows |
 | Playbooks | Prompt injection incident response and AI service outage tabletop scenarios |
 | Policy as code | Open Policy Agent examples for AI tool execution decisions |
@@ -57,6 +58,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 | `templates/human-approval-matrix.md` | Define when AI-assisted actions require review, approval, or dual approval |
 | `templates/board-ai-security-assurance-checklist.md` | Executive assurance checklist for approving high-impact AI systems |
 | `templates/ai-control-evidence-raci.md` | Assign control ownership and evidence accountability across AI governance roles |
+| `templates/ai-red-team-test-plan.md` | Plan AI red-team scenarios, evidence capture, pass/fail criteria, and release decisions |
 | `templates/prompt-injection-test-record.md` | Record direct and indirect prompt injection test cases, outcomes, and remediation |
 | `templates/ai-agent-tool-inventory.csv` | Track agent tools, environments, permissions, data access, owners, and review dates |
 | `templates/ai-exception-register.csv` | Track AI governance exceptions, expirations, risk owners, and compensating controls |
