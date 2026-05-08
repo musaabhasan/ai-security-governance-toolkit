@@ -247,6 +247,20 @@ def validate_exception_aging_report_assets() -> None:
         fail(f"{sample_path.relative_to(ROOT)} should include multiple exception states")
 
 
+def validate_risk_register_report_assets() -> None:
+    script_path = ROOT / "scripts" / "risk_register_report.py"
+    guide_path = ROOT / "templates" / "ai-risk-register-report.md"
+
+    for path in (script_path, guide_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in ("--fail-on-residual", "Residual risk counts by theme", "Owner review queue"):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing risk-register report guidance: {required}")
+
+
 def validate_policy_input_shape(path: Path, example: dict[str, object]) -> None:
     required_top_level = ("agent", "tool", "action", "data_classification", "human_approval")
     for field in required_top_level:
@@ -296,6 +310,7 @@ def main() -> int:
         validate_csv_templates,
         validate_policy_as_code_examples,
         validate_exception_aging_report_assets,
+        validate_risk_register_report_assets,
     ]
     for check in checks:
         check()

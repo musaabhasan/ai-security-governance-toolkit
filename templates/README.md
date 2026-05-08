@@ -15,6 +15,7 @@ This index lists the reusable governance templates included in the toolkit.
 | [AI Logging And Retention Checklist](ai-logging-retention-checklist.md) | Use this checklist before enabling prompt, output, embedding, tool-call, or administrative logs for AI systems. |
 | [AI Procurement Scoring Worksheet](ai-procurement-scoring-worksheet.md) | Use this worksheet to score AI vendors, hosted models, embedded AI features, and agent platforms before purchase, renewal, or expansion. |
 | [AI Red-Team Test Plan](ai-red-team-test-plan.md) | Use this template to plan and record AI red-team testing before production release, major model changes, new tool access, or high-impact workflow changes. |
+| [AI Risk Register Report](ai-risk-register-report.md) | Use this report before governance forums and audit planning to summarize residual risk by theme, owner queue, and review-date status. |
 | [AI Risk Tiering Decision Record](ai-risk-tiering-decision-record.md) | Use this record to classify an AI system into a governance risk tier, set the minimum control baseline, route approvals, and define review cadence. |
 | [AI System Decommissioning Checklist](ai-system-decommissioning-checklist.md) | Use this checklist when retiring, replacing, pausing, or materially reducing an AI system, model, assistant, agent, or AI-enabled vendor service. |
 | [Lightweight AI Model Card](ai-model-card-lite.md) | Use this model card for internal review when a full model card is not available from the provider. |
