@@ -17,6 +17,17 @@ HIGH_IMPACT_ACTIONS = {
     "execute_code",
 }
 REQUIRED_CSV_HEADERS = {
+    "agentic-risk-control-mapping.csv": [
+        "risk_id",
+        "risk_theme",
+        "agentic_failure_mode",
+        "control_ids",
+        "required_evidence",
+        "minimum_test",
+        "release_gate",
+        "monitoring_signal",
+        "owner_role",
+    ],
     "ai-agent-tool-inventory.csv": [
         "agent_name",
         "tool_name",
@@ -263,6 +274,59 @@ def validate_control_catalog() -> None:
                 fail(f"{control_id} is missing {section}")
 
 
+def validate_agentic_risk_control_mapping_assets() -> None:
+    script_path = ROOT / "scripts" / "agentic_risk_control_report.py"
+    guide_path = ROOT / "controls" / "agentic-risk-control-mapping.md"
+    mapping_path = ROOT / "controls" / "agentic-risk-control-mapping.csv"
+    markdown_report_path = ROOT / "examples" / "agentic-risk-control-report.md"
+    json_report_path = ROOT / "examples" / "agentic-risk-control-report.json"
+
+    for path in (script_path, guide_path, mapping_path, markdown_report_path, json_report_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in ("AR-001", "release gate", "monitoring signals", "--fail-on-missing-gate"):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing agentic mapping guidance: {required}")
+
+    catalog_ids = set(CONTROL_ID_PATTERN.findall(read_text(ROOT / "controls" / "control-catalog.yaml")))
+    with mapping_path.open("r", encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+
+    with mapping_path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.reader(handle)
+        header = next(reader, [])
+    if header != REQUIRED_CSV_HEADERS["agentic-risk-control-mapping.csv"]:
+        fail(f"{mapping_path.relative_to(ROOT)} has unexpected headers")
+    if not rows:
+        fail(f"{mapping_path.relative_to(ROOT)} is empty")
+    if len(rows) < 8:
+        fail(f"{mapping_path.relative_to(ROOT)} should include multiple agentic risk themes")
+
+    risk_ids = [row["risk_id"] for row in rows]
+    duplicates = sorted({risk_id for risk_id in risk_ids if risk_ids.count(risk_id) > 1})
+    if duplicates:
+        fail(f"Duplicate agentic risk IDs found: {', '.join(duplicates)}")
+
+    for row in rows:
+        missing = [column for column in REQUIRED_CSV_HEADERS["agentic-risk-control-mapping.csv"] if not row[column].strip()]
+        if missing:
+            fail(f"{row['risk_id']} is missing required mapping fields: {', '.join(missing)}")
+        for control_id in [item.strip() for item in row["control_ids"].split(";") if item.strip()]:
+            if control_id not in catalog_ids:
+                fail(f"{row['risk_id']} maps to unknown control ID: {control_id}")
+
+    markdown_report_text = read_text(markdown_report_path)
+    for required in ("Mapped risk themes: `10`", "Owner Queue", "Control Coverage"):
+        if required not in markdown_report_text:
+            fail(f"{markdown_report_path.relative_to(ROOT)} is missing report section: {required}")
+
+    json_report = json.loads(read_text(json_report_path))
+    if json_report.get("summary", {}).get("mapped_risk_themes") != len(rows):
+        fail(f"{json_report_path.relative_to(ROOT)} has an unexpected mapped risk count")
+
+
 def validate_csv_templates() -> None:
     for path in sorted((ROOT / "templates").glob("*.csv")):
         with path.open("r", encoding="utf-8", newline="") as handle:
@@ -502,6 +566,7 @@ def main() -> int:
         validate_markdown_headings,
         validate_template_index,
         validate_control_catalog,
+        validate_agentic_risk_control_mapping_assets,
         validate_csv_templates,
         validate_policy_as_code_examples,
         validate_exception_aging_report_assets,

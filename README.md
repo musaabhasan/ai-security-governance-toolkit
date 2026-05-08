@@ -28,6 +28,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Third-party dependency assurance | Provider/subprocessor register, assurance review, DPA status, subprocessor transparency, exit planning, and continuity evidence |
 | Logging and retention | Checklist for prompt, output, embedding, tool-call, and operational log governance |
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
+| Agentic risk mapping | Agentic failure modes mapped to controls, evidence, release gates, monitoring signals, and owner roles |
 | Red-team readiness | Scenario-based AI red-team test planning, evidence capture, and release decisions |
 | Incident response | AI-specific incident severity classification, escalation triggers, and evidence preservation |
 | Tabletop evidence | Exercise evidence register and reporting for decision logs, containment, communications, fallback, privacy review, and remediation |
@@ -71,6 +72,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 20. Review provider, subprocessor, and critical AI dependency gaps with `scripts/third_party_dependency_report.py`.
 21. Review tabletop evidence gaps with `scripts/tabletop_evidence_report.py`.
 22. Review AI evaluation evidence readiness with `scripts/evaluation_evidence_report.py`.
+23. Map agentic failure modes to controls and release gates with `scripts/agentic_risk_control_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -117,6 +119,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/model-provider-change-approval.md` | Review model/provider changes for data handling, quality, safety, RAG behavior, tool use, cost, continuity, and approval routing |
 | `templates/model-monitoring-kpi-register.md` | Define post-approval AI monitoring KPIs, thresholds, evidence sources, owners, and escalation rules |
 | `templates/model-monitoring-kpi-register.csv` | Spreadsheet-friendly companion for model monitoring KPI tracking and review records |
+| `controls/agentic-risk-control-mapping.md` | Map agentic AI failure modes to practical controls, evidence, release gates, monitoring signals, and owner roles |
+| `controls/agentic-risk-control-mapping.csv` | Spreadsheet-friendly companion for agentic risk-to-control mapping |
 | `policies/ai-log-retention-policy.md` | Define retention expectations for prompts, outputs, embeddings, tool calls, and security events |
 | `playbooks/ai-data-leak-triage.md` | Triage suspected AI data exposure through prompts, outputs, logs, embeddings, or providers |
 | `playbooks/agentic-tool-misuse-response.md` | Contain and investigate incorrect or unauthorized agent tool actions |
@@ -126,11 +130,14 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `scripts/third_party_dependency_report.py` | Generate Markdown or JSON reports for provider, subprocessor, assurance, exit-plan, and continuity gaps |
 | `scripts/tabletop_evidence_report.py` | Generate Markdown or JSON reports for tabletop exercise evidence gaps, owner queues, and release-blocking readiness issues |
 | `scripts/evaluation_evidence_report.py` | Generate Markdown or JSON reports for AI evaluation evidence readiness, stale evidence, missing coverage, release-blocking failures, and owner queues |
+| `scripts/agentic_risk_control_report.py` | Generate Markdown or JSON summaries of agentic risk mappings, owner queues, control coverage, release gates, and monitoring signals |
 | `examples/ai-data-deletion-evidence-sample.csv` | Sample deletion evidence register covering overdue, verified, missing-evidence, and retention-exception states |
 | `examples/ai-third-party-dependency-sample.csv` | Sample third-party AI dependency register covering missing DPA, subprocessor transparency, stale assurance, and continuity gaps |
 | `examples/ai-tabletop-exercise-evidence-sample.csv` | Sample tabletop evidence register covering provider fallback, prompt injection, data exposure, and agent tool misuse scenarios |
 | `examples/ai-evaluation-evidence-sample.csv` | Sample evaluation evidence register covering RAG, security, citation, human review, low pass-rate, and stale evidence cases |
 | `examples/ai-exception-register-sample.csv` | Sample exception register for report testing and governance workshop demonstrations |
+| `examples/agentic-risk-control-report.md` | Example Markdown report summarizing agentic risk owner queues, control coverage, release gates, and monitoring signals |
+| `examples/agentic-risk-control-report.json` | Example machine-readable output from the agentic risk control mapping report |
 | `examples/edtech-ai-assistant-privacy-review.md` | Example privacy review for a student-facing AI assistant pilot |
 
 ## Suggested Repository Use

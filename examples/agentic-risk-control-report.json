@@ -1,0 +1,218 @@
+{
+  "summary": {
+    "mapped_risk_themes": 10,
+    "owner_queue": {
+      "AI platform owner": 2,
+      "Identity owner": 1,
+      "Internal audit owner": 1,
+      "Model risk owner": 1,
+      "Operations owner": 1,
+      "Privacy owner": 1,
+      "Security owner": 2,
+      "Third-party risk owner": 1
+    },
+    "control_coverage": {
+      "AI-AGT-001": 3,
+      "AI-AGT-002": 3,
+      "AI-BCM-001": 2,
+      "AI-DATA-001": 1,
+      "AI-DATA-002": 1,
+      "AI-GOV-001": 3,
+      "AI-GOV-002": 2,
+      "AI-ID-001": 2,
+      "AI-OPS-001": 4,
+      "AI-SEC-001": 4,
+      "AI-VND-001": 2
+    }
+  },
+  "mappings": [
+    {
+      "risk_id": "AR-001",
+      "risk_theme": "Instruction and goal manipulation",
+      "agentic_failure_mode": "User or retrieved content changes the agent goal or overrides higher-priority instructions",
+      "control_ids": [
+        "AI-SEC-001",
+        "AI-AGT-001"
+      ],
+      "required_evidence": [
+        "Prompt-injection test plan",
+        "blocked instruction trace",
+        "policy decision log"
+      ],
+      "minimum_test": "Run direct and indirect prompt-injection cases against every externally exposed agent workflow",
+      "release_gate": "Block release when high-severity instruction override succeeds",
+      "monitoring_signal": "Repeated denied instruction-override attempts",
+      "owner_role": "Security owner"
+    },
+    {
+      "risk_id": "AR-002",
+      "risk_theme": "Tool misuse and unsafe action",
+      "agentic_failure_mode": "Agent invokes an approved tool for an unapproved purpose or with unsafe parameters",
+      "control_ids": [
+        "AI-AGT-001",
+        "AI-AGT-002",
+        "AI-OPS-001"
+      ],
+      "required_evidence": [
+        "Tool allowlist",
+        "approval record",
+        "tool-call audit log"
+      ],
+      "minimum_test": "Replay high-impact tool calls with malformed and adversarial arguments",
+      "release_gate": "Block release when unsafe tool action executes without approval",
+      "monitoring_signal": "High-risk tool call without matching approval ID",
+      "owner_role": "AI platform owner"
+    },
+    {
+      "risk_id": "AR-003",
+      "risk_theme": "Privilege and delegation abuse",
+      "agentic_failure_mode": "Agent uses broad service credentials or acts beyond the user or task authority",
+      "control_ids": [
+        "AI-ID-001",
+        "AI-AGT-002"
+      ],
+      "required_evidence": [
+        "Service identity inventory",
+        "delegated authority record",
+        "access review evidence"
+      ],
+      "minimum_test": "Attempt role escalation, cross-tenant access, and delegated-action replay",
+      "release_gate": "Block release when tool access is not bound to identity and task scope",
+      "monitoring_signal": "Tool call using unexpected credential context",
+      "owner_role": "Identity owner"
+    },
+    {
+      "risk_id": "AR-004",
+      "risk_theme": "Sensitive data disclosure",
+      "agentic_failure_mode": "Agent exposes regulated or confidential data through responses, tools, logs, memory, or provider calls",
+      "control_ids": [
+        "AI-DATA-001",
+        "AI-DATA-002",
+        "AI-VND-001"
+      ],
+      "required_evidence": [
+        "Data classification worksheet",
+        "log-retention decision",
+        "redaction test evidence"
+      ],
+      "minimum_test": "Run sensitive-data prompts and retrieval cases across prompt, output, log, and tool traces",
+      "release_gate": "Block release when regulated data leaves an approved boundary",
+      "monitoring_signal": "Unexpected sensitive-data pattern in output or logs",
+      "owner_role": "Privacy owner"
+    },
+    {
+      "risk_id": "AR-005",
+      "risk_theme": "Memory and state poisoning",
+      "agentic_failure_mode": "Untrusted content is promoted into agent memory or long-term state and later influences decisions",
+      "control_ids": [
+        "AI-SEC-001",
+        "AI-OPS-001",
+        "AI-GOV-001"
+      ],
+      "required_evidence": [
+        "Memory promotion policy",
+        "state-change log",
+        "review evidence"
+      ],
+      "minimum_test": "Inject conflicting or malicious memory items and verify promotion controls",
+      "release_gate": "Block release when unreviewed memory changes can affect high-impact actions",
+      "monitoring_signal": "Memory write from untrusted source or expired state",
+      "owner_role": "AI platform owner"
+    },
+    {
+      "risk_id": "AR-006",
+      "risk_theme": "Agent supply-chain exposure",
+      "agentic_failure_mode": "Plugins, skills, tools, prompts, models, or dependencies change agent behavior without review",
+      "control_ids": [
+        "AI-VND-001",
+        "AI-GOV-002",
+        "AI-SEC-001"
+      ],
+      "required_evidence": [
+        "Vendor review",
+        "dependency inventory",
+        "prompt/model version record"
+      ],
+      "minimum_test": "Review dependency, prompt, model, and tool changes before enabling production use",
+      "release_gate": "Block release when unreviewed external component can execute or influence tools",
+      "monitoring_signal": "New tool or dependency with no approval record",
+      "owner_role": "Third-party risk owner"
+    },
+    {
+      "risk_id": "AR-007",
+      "risk_theme": "Inter-agent communication failure",
+      "agentic_failure_mode": "One agent transfers authority, context, or instructions to another without preserving trust boundaries",
+      "control_ids": [
+        "AI-GOV-001",
+        "AI-ID-001",
+        "AI-AGT-001"
+      ],
+      "required_evidence": [
+        "Agent responsibility matrix",
+        "message envelope",
+        "delegation record"
+      ],
+      "minimum_test": "Test agent-to-agent handoff with spoofed sender, stale context, and overbroad delegation",
+      "release_gate": "Block release when receiving agent trusts unsigned or unscoped handoff context",
+      "monitoring_signal": "Agent-to-agent handoff missing source identity",
+      "owner_role": "Security owner"
+    },
+    {
+      "risk_id": "AR-008",
+      "risk_theme": "Resource and cost exhaustion",
+      "agentic_failure_mode": "Agent loops, retries, expands context, or consumes excessive API, compute, workflow, or storage resources",
+      "control_ids": [
+        "AI-OPS-001",
+        "AI-BCM-001"
+      ],
+      "required_evidence": [
+        "Usage thresholds",
+        "rate limits",
+        "continuity plan",
+        "alert evidence"
+      ],
+      "minimum_test": "Run runaway-task, retry-storm, and large-context tests against production-like limits",
+      "release_gate": "Block release when spend or concurrency limits are missing for agentic workflows",
+      "monitoring_signal": "Token spend spike or repeated failed action chain",
+      "owner_role": "Operations owner"
+    },
+    {
+      "risk_id": "AR-009",
+      "risk_theme": "Audit and non-repudiation gap",
+      "agentic_failure_mode": "Teams cannot reconstruct what the agent knew, decided, approved, and executed",
+      "control_ids": [
+        "AI-GOV-001",
+        "AI-OPS-001",
+        "AI-AGT-002"
+      ],
+      "required_evidence": [
+        "Execution receipt",
+        "approval record",
+        "evidence register entry"
+      ],
+      "minimum_test": "Sample decisions and verify prompt, context, policy decision, tool call, and outcome linkage",
+      "release_gate": "Block release when high-impact actions lack reconstructable evidence",
+      "monitoring_signal": "Missing correlation ID across prompt, policy, and tool logs",
+      "owner_role": "Internal audit owner"
+    },
+    {
+      "risk_id": "AR-010",
+      "risk_theme": "Model or provider behavior drift",
+      "agentic_failure_mode": "Model, safety filter, provider, prompt, retrieval index, or routing change alters risk posture",
+      "control_ids": [
+        "AI-GOV-002",
+        "AI-BCM-001",
+        "AI-SEC-001"
+      ],
+      "required_evidence": [
+        "Change approval",
+        "evaluation evidence",
+        "fallback test record"
+      ],
+      "minimum_test": "Run regression, safety, citation, and provider-fallback tests after material changes",
+      "release_gate": "Block release when evaluation evidence is stale or release-blocking failures remain",
+      "monitoring_signal": "New model/provider version without matching approval",
+      "owner_role": "Model risk owner"
+    }
+  ]
+}
