@@ -26,6 +26,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Red-team readiness | Scenario-based AI red-team test planning, evidence capture, and release decisions |
 | Incident response | AI-specific incident severity classification, escalation triggers, and evidence preservation |
 | Decommissioning | Retirement checklist for model, provider, data, credential, log, vector-store, and integration shutdown |
+| Model/provider changes | Approval workflow for model, provider, endpoint, embedding, safety-filter, region, and agent-runtime changes |
 | EdTech example | AI assistant governance profile for learning platforms and student-facing workflows |
 | Playbooks | Prompt injection incident response and AI service outage tabletop scenarios |
 | Policy as code | Open Policy Agent examples for AI tool execution decisions |
@@ -52,6 +53,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 9. Review logging decisions with `templates/ai-logging-retention-checklist.md`.
 10. Run a tabletop exercise from `playbooks/` before production rollout.
 11. Use `templates/ai-system-decommissioning-checklist.md` before retiring, replacing, or pausing an AI system.
+12. Use `templates/model-provider-change-approval.md` before changing models, providers, endpoints, embeddings, regions, or safety filters.
 
 Validate repository artifacts before opening a pull request:
 
@@ -81,6 +83,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-exception-register.csv` | Track AI governance exceptions, expirations, risk owners, and compensating controls |
 | `templates/ai-model-card-lite.md` | Capture lightweight model use, limitations, oversight, and risk notes |
 | `templates/model-provider-exit-plan.md` | Plan provider exit triggers, fallback options, data export, and deletion evidence |
+| `templates/model-provider-change-approval.md` | Review model/provider changes for data handling, quality, safety, RAG behavior, tool use, cost, continuity, and approval routing |
 | `policies/ai-log-retention-policy.md` | Define retention expectations for prompts, outputs, embeddings, tool calls, and security events |
 | `playbooks/ai-data-leak-triage.md` | Triage suspected AI data exposure through prompts, outputs, logs, embeddings, or providers |
 | `playbooks/agentic-tool-misuse-response.md` | Contain and investigate incorrect or unauthorized agent tool actions |
