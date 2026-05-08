@@ -27,6 +27,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Incident response | AI-specific incident severity classification, escalation triggers, and evidence preservation |
 | Decommissioning | Retirement checklist for model, provider, data, credential, log, vector-store, and integration shutdown |
 | Model/provider changes | Approval workflow for model, provider, endpoint, embedding, safety-filter, region, and agent-runtime changes |
+| Model monitoring | KPI register for quality, safety, retrieval integrity, drift, security, reliability, cost, privacy, and oversight |
 | EdTech example | AI assistant governance profile for learning platforms and student-facing workflows |
 | Playbooks | Prompt injection incident response and AI service outage tabletop scenarios |
 | Policy as code | Open Policy Agent examples for AI tool execution decisions |
@@ -55,6 +56,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 11. Run a tabletop exercise from `playbooks/` before production rollout.
 12. Use `templates/ai-system-decommissioning-checklist.md` before retiring, replacing, or pausing an AI system.
 13. Use `templates/model-provider-change-approval.md` before changing models, providers, endpoints, embeddings, regions, or safety filters.
+14. Track production health with `templates/model-monitoring-kpi-register.md`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -87,6 +89,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-procurement-scoring-worksheet.csv` | Spreadsheet-friendly companion for weighted procurement scoring, evidence gaps, and remediation ownership |
 | `templates/model-provider-exit-plan.md` | Plan provider exit triggers, fallback options, data export, and deletion evidence |
 | `templates/model-provider-change-approval.md` | Review model/provider changes for data handling, quality, safety, RAG behavior, tool use, cost, continuity, and approval routing |
+| `templates/model-monitoring-kpi-register.md` | Define post-approval AI monitoring KPIs, thresholds, evidence sources, owners, and escalation rules |
+| `templates/model-monitoring-kpi-register.csv` | Spreadsheet-friendly companion for model monitoring KPI tracking and review records |
 | `policies/ai-log-retention-policy.md` | Define retention expectations for prompts, outputs, embeddings, tool calls, and security events |
 | `playbooks/ai-data-leak-triage.md` | Triage suspected AI data exposure through prompts, outputs, logs, embeddings, or providers |
 | `playbooks/agentic-tool-misuse-response.md` | Contain and investigate incorrect or unauthorized agent tool actions |
