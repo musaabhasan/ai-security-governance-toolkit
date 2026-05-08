@@ -25,6 +25,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
 | Red-team readiness | Scenario-based AI red-team test planning, evidence capture, and release decisions |
 | Incident response | AI-specific incident severity classification, escalation triggers, and evidence preservation |
+| Decommissioning | Retirement checklist for model, provider, data, credential, log, vector-store, and integration shutdown |
 | EdTech example | AI assistant governance profile for learning platforms and student-facing workflows |
 | Playbooks | Prompt injection incident response and AI service outage tabletop scenarios |
 | Policy as code | Open Policy Agent examples for AI tool execution decisions |
@@ -50,6 +51,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 8. Complete `templates/vendor-ai-due-diligence.md` before approving external AI services.
 9. Review logging decisions with `templates/ai-logging-retention-checklist.md`.
 10. Run a tabletop exercise from `playbooks/` before production rollout.
+11. Use `templates/ai-system-decommissioning-checklist.md` before retiring, replacing, or pausing an AI system.
 
 Validate repository artifacts before opening a pull request:
 
@@ -65,6 +67,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | --- | --- |
 | `templates/ai-change-impact-assessment.md` | Review governance, data, model, tool, compliance, and continuity impact after AI system changes |
 | `templates/ai-risk-tiering-decision-record.md` | Classify AI systems into risk tiers, set required control baselines, define approval routes, and record residual-risk decisions |
+| `templates/ai-system-decommissioning-checklist.md` | Retire AI systems safely by handling data, credentials, vector stores, logs, vendor access, integrations, evidence, and residual risk |
 | `templates/ai-data-flow-record.md` | Document AI data sources, processing steps, destinations, classifications, and controls |
 | `templates/ai-access-review.md` | Review user, administrator, service account, API key, and agent tool permissions |
 | `templates/human-approval-matrix.md` | Define when AI-assisted actions require review, approval, or dual approval |
