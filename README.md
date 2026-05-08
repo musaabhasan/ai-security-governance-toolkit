@@ -29,6 +29,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
 | Red-team readiness | Scenario-based AI red-team test planning, evidence capture, and release decisions |
 | Incident response | AI-specific incident severity classification, escalation triggers, and evidence preservation |
+| Tabletop evidence | Exercise evidence register and reporting for decision logs, containment, communications, fallback, privacy review, and remediation |
 | Decommissioning | Retirement checklist for model, provider, data, credential, log, vector-store, and integration shutdown |
 | Model/provider changes | Approval workflow for model, provider, endpoint, embedding, safety-filter, region, and agent-runtime changes |
 | Model monitoring | KPI register for quality, safety, retrieval integrity, drift, security, reliability, cost, privacy, and oversight |
@@ -58,14 +59,16 @@ The toolkit is designed to be framework-aware without pretending to replace form
 9. Complete `templates/vendor-ai-due-diligence.md` before approving external AI services.
 10. Review logging decisions with `templates/ai-logging-retention-checklist.md`.
 11. Run a tabletop exercise from `playbooks/` before production rollout.
-12. Use `templates/ai-system-decommissioning-checklist.md` before retiring, replacing, or pausing an AI system.
-13. Use `templates/model-provider-change-approval.md` before changing models, providers, endpoints, embeddings, regions, or safety filters.
-14. Track production health with `templates/model-monitoring-kpi-register.md`.
-15. Package control test evidence with `templates/ai-control-test-evidence-pack.md`.
-16. Review active exceptions with `scripts/exception_aging_report.py`.
-17. Summarize residual risk and owner review queues with `scripts/risk_register_report.py`.
-18. Review deletion evidence gaps with `scripts/data_deletion_evidence_report.py`.
-19. Review provider, subprocessor, and critical AI dependency gaps with `scripts/third_party_dependency_report.py`.
+12. Track tabletop exercise evidence with `templates/ai-tabletop-exercise-evidence-register.csv`.
+13. Use `templates/ai-system-decommissioning-checklist.md` before retiring, replacing, or pausing an AI system.
+14. Use `templates/model-provider-change-approval.md` before changing models, providers, endpoints, embeddings, regions, or safety filters.
+15. Track production health with `templates/model-monitoring-kpi-register.md`.
+16. Package control test evidence with `templates/ai-control-test-evidence-pack.md`.
+17. Review active exceptions with `scripts/exception_aging_report.py`.
+18. Summarize residual risk and owner review queues with `scripts/risk_register_report.py`.
+19. Review deletion evidence gaps with `scripts/data_deletion_evidence_report.py`.
+20. Review provider, subprocessor, and critical AI dependency gaps with `scripts/third_party_dependency_report.py`.
+21. Review tabletop evidence gaps with `scripts/tabletop_evidence_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -104,6 +107,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-procurement-scoring-worksheet.csv` | Spreadsheet-friendly companion for weighted procurement scoring, evidence gaps, and remediation ownership |
 | `templates/ai-third-party-dependency-register.csv` | Track AI providers, subprocessors, critical services, data access, DPA status, assurance evidence, exit plans, and continuity posture |
 | `templates/ai-third-party-dependency-report.md` | Operating guide for reviewing third-party AI dependency gaps before release, renewal, audit, or provider change |
+| `templates/ai-tabletop-exercise-evidence-register.csv` | Track AI tabletop exercise evidence, decision logs, containment tests, communications, fallback, privacy review, and remediation |
+| `templates/ai-tabletop-evidence-report.md` | Operating guide for reviewing tabletop exercise gaps before release, audit, or governance review |
 | `templates/model-provider-exit-plan.md` | Plan provider exit triggers, fallback options, data export, and deletion evidence |
 | `templates/model-provider-change-approval.md` | Review model/provider changes for data handling, quality, safety, RAG behavior, tool use, cost, continuity, and approval routing |
 | `templates/model-monitoring-kpi-register.md` | Define post-approval AI monitoring KPIs, thresholds, evidence sources, owners, and escalation rules |
@@ -115,8 +120,10 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `scripts/risk_register_report.py` | Generate Markdown or JSON summaries of residual AI risk, owner queues, review dates, and theme-level exposure |
 | `scripts/data_deletion_evidence_report.py` | Generate Markdown or JSON reports for AI data deletion evidence gaps and processor review queues |
 | `scripts/third_party_dependency_report.py` | Generate Markdown or JSON reports for provider, subprocessor, assurance, exit-plan, and continuity gaps |
+| `scripts/tabletop_evidence_report.py` | Generate Markdown or JSON reports for tabletop exercise evidence gaps, owner queues, and release-blocking readiness issues |
 | `examples/ai-data-deletion-evidence-sample.csv` | Sample deletion evidence register covering overdue, verified, missing-evidence, and retention-exception states |
 | `examples/ai-third-party-dependency-sample.csv` | Sample third-party AI dependency register covering missing DPA, subprocessor transparency, stale assurance, and continuity gaps |
+| `examples/ai-tabletop-exercise-evidence-sample.csv` | Sample tabletop evidence register covering provider fallback, prompt injection, data exposure, and agent tool misuse scenarios |
 | `examples/ai-exception-register-sample.csv` | Sample exception register for report testing and governance workshop demonstrations |
 | `examples/edtech-ai-assistant-privacy-review.md` | Example privacy review for a student-facing AI assistant pilot |
 
