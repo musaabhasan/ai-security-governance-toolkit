@@ -31,6 +31,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Third-party dependency assurance | Provider/subprocessor register, assurance review, DPA status, subprocessor transparency, exit planning, and continuity evidence |
 | Logging and retention | Checklist for prompt, output, embedding, tool-call, and operational log governance |
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
+| Agent memory governance | Persistent memory register and review report for consent, stale facts, deletion evidence, retrieval boundaries, and memory poisoning risks |
 | Agentic risk mapping | Agentic failure modes mapped to controls, evidence, release gates, monitoring signals, and owner roles |
 | OWASP LLM 2025 mapping | OWASP LLM application risks mapped to toolkit controls, evidence, release gates, monitoring signals, and owner queues |
 | NIST AI RMF crosswalk | Govern, Map, Measure, and Manage functions mapped to controls, evidence, review cadence, and owner roles |
@@ -91,7 +92,8 @@ The toolkit is designed to be framework-aware without pretending to replace form
 31. Triage AI privacy review and DPIA triggers with `scripts/dpia_triage_report.py`.
 32. Review rollback readiness for model, prompt, provider, safety-filter, and RAG releases with `scripts/rollback_readiness_report.py`.
 33. Set evidence retention, deletion, storage, and legal-hold expectations with `templates/ai-evidence-retention-schedule.md`.
-34. Run governance forums with `templates/ai-governance-review-agenda.md`.
+34. Review persistent memory with `templates/ai-agent-memory-governance-register.md` and `templates/ai-agent-memory-governance-report.md`.
+35. Run governance forums with `templates/ai-governance-review-agenda.md`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -120,6 +122,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-access-review.md` | Review user, administrator, service account, API key, and agent tool permissions |
 | `templates/ai-access-recertification-register.csv` | Track AI access assignments, privileged roles, service accounts, tokens, tool permissions, MFA, review dates, and recertification decisions |
 | `templates/ai-access-recertification-report.md` | Operating guide for reviewing stale access, unowned tokens, separated users, break-glass approval, and high-impact agent tool permissions |
+| `templates/ai-agent-memory-governance-register.md` | Record persistent memory assets, write rules, retrieval boundaries, lifecycle evidence, deletion proof, and approval decisions for AI agents and assistants |
+| `templates/ai-agent-memory-governance-report.md` | Review consent, deletion, stale-fact handling, access boundaries, provider transfer, memory poisoning, and owner queues before enabling persistent memory |
 | `templates/human-approval-matrix.md` | Define when AI-assisted actions require review, approval, or dual approval |
 | `templates/board-ai-security-assurance-checklist.md` | Executive assurance checklist for approving high-impact AI systems |
 | `templates/ai-control-evidence-raci.md` | Assign control ownership and evidence accountability across AI governance roles |
