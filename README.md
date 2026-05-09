@@ -18,6 +18,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | --- | --- |
 | AI system intake | Initial AI use-case review, data classification, deployment model, ownership, and approval path |
 | Risk management | AI risk tiering, AI risk register, risk-register reporting, control ownership, inherent/residual scoring, and decision tracking |
+| Governance forums | Repeatable review agendas, decision logs, risk acceptance records, required participants, and follow-up tracking |
 | Control catalog | Governance, identity, data, model, agent, vendor, monitoring, and continuity controls |
 | Evidence management | Evidence register, test records, exception tracking, and audit-ready documentation |
 | Evidence quality | Evidence freshness, ownership, source, cadence, status, and owner-review queues |
@@ -90,6 +91,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 31. Triage AI privacy review and DPIA triggers with `scripts/dpia_triage_report.py`.
 32. Review rollback readiness for model, prompt, provider, safety-filter, and RAG releases with `scripts/rollback_readiness_report.py`.
 33. Set evidence retention, deletion, storage, and legal-hold expectations with `templates/ai-evidence-retention-schedule.md`.
+34. Run governance forums with `templates/ai-governance-review-agenda.md`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -129,6 +131,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-evaluation-evidence-report.md` | Operating guide for reviewing stale, incomplete, low-scoring, or release-blocking AI evaluation evidence |
 | `templates/ai-red-team-test-plan.md` | Plan AI red-team scenarios, evidence capture, pass/fail criteria, and release decisions |
 | `templates/ai-governance-escalation-decision-tree.md` | Route AI use cases, incidents, model/provider changes, agent tools, and research risks to the correct governance review path |
+| `templates/ai-governance-review-agenda.md` | Run structured governance forums with required participants, pre-read evidence, decision options, risk acceptance, and follow-up tracking |
 | `controls/ai-red-team-finding-taxonomy.md` | Classify AI red-team findings by risk theme, severity floor, evidence, release decision, owner role, and control mapping |
 | `controls/ai-red-team-finding-taxonomy.csv` | Spreadsheet-friendly red-team finding taxonomy for dashboards, approval gates, and remediation queues |
 | `templates/ai-risk-register-report.md` | Operating guide for summarizing residual AI risk by theme, owner, and review-date status |
