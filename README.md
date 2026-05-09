@@ -86,6 +86,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 28. Summarize AI red-team finding taxonomy coverage with `scripts/red_team_taxonomy_report.py`.
 29. Review evidence quality and freshness with `scripts/evidence_quality_report.py`.
 30. Review AI data provenance, transformation evidence, transfer records, and owner queues with `scripts/data_lineage_report.py`.
+31. Triage AI privacy review and DPIA triggers with `scripts/dpia_triage_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -107,6 +108,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-data-lineage-report.md` | Operating guide for reviewing data provenance, source ownership, transformation evidence, legal basis, retention, transfer, and review freshness |
 | `templates/ai-data-deletion-evidence-register.csv` | Track AI deletion requests, processors, scopes, due dates, completion evidence, verification, and retention exceptions |
 | `templates/ai-data-deletion-evidence-report.md` | Operating guide for reporting overdue deletions, missing evidence, unverified completions, and retention-exception review queues |
+| `templates/ai-dpia-triage-register.csv` | Track DPIA triggers, personal-data use, automated decisioning, monitoring, transfers, privacy notices, and owner decisions |
+| `templates/ai-dpia-triage-report.md` | Operating guide for privacy review triggers, owner queues, and DPIA launch blockers |
 | `templates/ai-access-review.md` | Review user, administrator, service account, API key, and agent tool permissions |
 | `templates/ai-access-recertification-register.csv` | Track AI access assignments, privileged roles, service accounts, tokens, tool permissions, MFA, review dates, and recertification decisions |
 | `templates/ai-access-recertification-report.md` | Operating guide for reviewing stale access, unowned tokens, separated users, break-glass approval, and high-impact agent tool permissions |
@@ -165,6 +168,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `scripts/evidence_quality_report.py` | Generate Markdown or JSON reports for evidence ownership, freshness, overdue items, cadence gaps, and owner queues |
 | `scripts/data_lineage_report.py` | Generate Markdown or JSON reports for AI data lineage completeness, provenance, sensitive-data evidence, transfer records, and owner queues |
 | `examples/ai-data-lineage-sample.csv` | Sample lineage register covering healthy, public-source, owner-missing, transfer-gap, and overdue-review states |
+| `scripts/dpia_triage_report.py` | Generate Markdown or JSON reports for AI DPIA triggers, owner queues, privacy-notice gaps, transfer risks, and launch blockers |
+| `examples/ai-dpia-triage-sample.csv` | Sample DPIA triage register covering student data, automated decisioning, third-party transfers, large-scale monitoring, and low-risk public-source use |
 | `examples/ai-data-deletion-evidence-sample.csv` | Sample deletion evidence register covering overdue, verified, missing-evidence, and retention-exception states |
 | `examples/ai-access-recertification-sample.csv` | Sample AI access recertification register covering privileged access, unowned tokens, separated identities, break-glass access, and current audit roles |
 | `examples/ai-access-recertification-report.json` | Example machine-readable output from the access recertification report |

@@ -1,0 +1,2 @@
+triage_id,system,use_case,data_subjects,data_classification,special_category_data,children_or_students,automated_decisioning,large_scale_processing,monitoring_or_tracking,third_party_provider,cross_border_transfer,human_review,privacy_notice_updated,dpia_owner,planned_launch_date,triage_decision,status,notes
+DPIA-001,Example AI Assistant,Example use case,Example users,internal,no,no,no,no,no,no,no,yes,yes,Privacy Owner,2026-08-01,monitor,draft,Template row for DPIA triage
