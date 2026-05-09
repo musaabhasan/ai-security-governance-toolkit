@@ -125,6 +125,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-evaluation-evidence-register.csv` | Track AI evaluation suites, dataset lineage, model/prompt/index versions, pass rates, failures, security/bias/citation coverage, human review, and release decisions |
 | `templates/ai-evaluation-evidence-report.md` | Operating guide for reviewing stale, incomplete, low-scoring, or release-blocking AI evaluation evidence |
 | `templates/ai-red-team-test-plan.md` | Plan AI red-team scenarios, evidence capture, pass/fail criteria, and release decisions |
+| `templates/ai-governance-escalation-decision-tree.md` | Route AI use cases, incidents, model/provider changes, agent tools, and research risks to the correct governance review path |
 | `controls/ai-red-team-finding-taxonomy.md` | Classify AI red-team findings by risk theme, severity floor, evidence, release decision, owner role, and control mapping |
 | `controls/ai-red-team-finding-taxonomy.csv` | Spreadsheet-friendly red-team finding taxonomy for dashboards, approval gates, and remediation queues |
 | `templates/ai-risk-register-report.md` | Operating guide for summarizing residual AI risk by theme, owner, and review-date status |
