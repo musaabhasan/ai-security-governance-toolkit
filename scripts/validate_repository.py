@@ -217,6 +217,27 @@ REQUIRED_CSV_HEADERS = {
         "status",
         "notes",
     ],
+    "ai-dpia-triage-register.csv": [
+        "triage_id",
+        "system",
+        "use_case",
+        "data_subjects",
+        "data_classification",
+        "special_category_data",
+        "children_or_students",
+        "automated_decisioning",
+        "large_scale_processing",
+        "monitoring_or_tracking",
+        "third_party_provider",
+        "cross_border_transfer",
+        "human_review",
+        "privacy_notice_updated",
+        "dpia_owner",
+        "planned_launch_date",
+        "triage_decision",
+        "status",
+        "notes",
+    ],
     "ai-third-party-dependency-register.csv": [
         "dependency_id",
         "system",
@@ -715,6 +736,38 @@ def validate_data_lineage_assets() -> None:
         fail(f"{sample_path.relative_to(ROOT)} should include multiple lineage states")
 
 
+def validate_dpia_triage_assets() -> None:
+    script_path = ROOT / "scripts" / "dpia_triage_report.py"
+    guide_path = ROOT / "templates" / "ai-dpia-triage-report.md"
+    register_path = ROOT / "templates" / "ai-dpia-triage-register.csv"
+    sample_path = ROOT / "examples" / "ai-dpia-triage-sample.csv"
+
+    for path in (script_path, guide_path, register_path, sample_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in ("DPIA Triggers", "Owner Queue", "--fail-on-high"):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing DPIA triage guidance: {required}")
+
+    script_text = read_text(script_path)
+    for required in ("owner_queues", "automated decisioning lacks human review", "decision appears too low"):
+        if required not in script_text:
+            fail(f"{script_path.relative_to(ROOT)} is missing DPIA triage behavior: {required}")
+
+    expected = REQUIRED_CSV_HEADERS["ai-dpia-triage-register.csv"]
+    for path in (register_path, sample_path):
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            rows = list(csv.reader(handle))
+        if not rows:
+            fail(f"{path.relative_to(ROOT)} is empty")
+        if rows[0] != expected:
+            fail(f"{path.relative_to(ROOT)} has unexpected headers")
+    if len(list(csv.reader(sample_path.open("r", encoding="utf-8", newline="")))) < 5:
+        fail(f"{sample_path.relative_to(ROOT)} should include multiple DPIA triage states")
+
+
 def validate_data_deletion_evidence_assets() -> None:
     script_path = ROOT / "scripts" / "data_deletion_evidence_report.py"
     guide_path = ROOT / "templates" / "ai-data-deletion-evidence-report.md"
@@ -964,6 +1017,7 @@ def main() -> int:
         validate_risk_register_report_assets,
         validate_evidence_quality_report_assets,
         validate_data_lineage_assets,
+        validate_dpia_triage_assets,
         validate_data_deletion_evidence_assets,
         validate_third_party_dependency_assets,
         validate_tabletop_evidence_assets,

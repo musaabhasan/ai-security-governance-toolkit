@@ -1,0 +1,6 @@
+triage_id,system,use_case,data_subjects,data_classification,special_category_data,children_or_students,automated_decisioning,large_scale_processing,monitoring_or_tracking,third_party_provider,cross_border_transfer,human_review,privacy_notice_updated,dpia_owner,planned_launch_date,triage_decision,status,notes
+DPIA-001,Student Support Assistant,FAQ answer generation,students,internal,no,yes,no,no,no,no,no,yes,yes,Privacy Office,2026-07-01,formal_review,draft,Student-facing bot requires student safeguard review
+DPIA-002,Admissions Scoring Assistant,Applicant prioritization,applicants,regulated,no,no,yes,yes,no,yes,yes,no,no,Data Protection Lead,2026-05-01,monitor,draft,Decision appears too low for triggers
+DPIA-003,Research Literature Assistant,Literature discovery,researchers,public,no,no,no,no,no,no,no,yes,yes,Research Governance Lead,2026-09-01,not_required,draft,Low privacy risk
+DPIA-004,Learning Analytics Early Alert,Risk prediction,students,student,no,yes,yes,yes,yes,yes,no,yes,yes,Learning Analytics Owner,2026-06-15,dpia_required,in_review,Formal DPIA already identified
+DPIA-005,IT Helpdesk Bot,Ticket triage,staff,confidential,no,no,no,yes,yes,yes,yes,yes,no,IT Privacy Owner,2026-06-01,formal_review,draft,Notice update and transfer records required
