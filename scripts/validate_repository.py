@@ -195,6 +195,28 @@ REQUIRED_CSV_HEADERS = {
         "next_review_date",
         "notes",
     ],
+    "ai-data-lineage-register.csv": [
+        "lineage_id",
+        "system",
+        "data_asset",
+        "source_system",
+        "source_owner",
+        "data_classification",
+        "processing_stage",
+        "model_or_index_version",
+        "downstream_use",
+        "legal_basis_or_consent",
+        "transformation_evidence",
+        "quality_check",
+        "retention_rule",
+        "cross_border_transfer",
+        "subprocessor",
+        "review_owner",
+        "last_reviewed",
+        "next_review",
+        "status",
+        "notes",
+    ],
     "ai-third-party-dependency-register.csv": [
         "dependency_id",
         "system",
@@ -661,6 +683,38 @@ def validate_evidence_quality_report_assets() -> None:
         fail(f"{sample_path.relative_to(ROOT)} should include multiple evidence quality states")
 
 
+def validate_data_lineage_assets() -> None:
+    script_path = ROOT / "scripts" / "data_lineage_report.py"
+    guide_path = ROOT / "templates" / "ai-data-lineage-report.md"
+    register_path = ROOT / "templates" / "ai-data-lineage-register.csv"
+    sample_path = ROOT / "examples" / "ai-data-lineage-sample.csv"
+
+    for path in (script_path, guide_path, register_path, sample_path):
+        if not path.exists():
+            fail(f"{path.relative_to(ROOT)} is missing")
+
+    guide_text = read_text(guide_path)
+    for required in ("data provenance", "Owner Review Queue", "--fail-on-high"):
+        if required not in guide_text:
+            fail(f"{guide_path.relative_to(ROOT)} is missing data-lineage guidance: {required}")
+
+    script_text = read_text(script_path)
+    for required in ("owner_queues", "cross-border transfer missing", "transformation evidence missing"):
+        if required not in script_text:
+            fail(f"{script_path.relative_to(ROOT)} is missing data-lineage behavior: {required}")
+
+    expected = REQUIRED_CSV_HEADERS["ai-data-lineage-register.csv"]
+    for path in (register_path, sample_path):
+        with path.open("r", encoding="utf-8", newline="") as handle:
+            rows = list(csv.reader(handle))
+        if not rows:
+            fail(f"{path.relative_to(ROOT)} is empty")
+        if rows[0] != expected:
+            fail(f"{path.relative_to(ROOT)} has unexpected headers")
+    if len(list(csv.reader(sample_path.open("r", encoding="utf-8", newline="")))) < 5:
+        fail(f"{sample_path.relative_to(ROOT)} should include multiple lineage states")
+
+
 def validate_data_deletion_evidence_assets() -> None:
     script_path = ROOT / "scripts" / "data_deletion_evidence_report.py"
     guide_path = ROOT / "templates" / "ai-data-deletion-evidence-report.md"
@@ -909,6 +963,7 @@ def main() -> int:
         validate_exception_aging_report_assets,
         validate_risk_register_report_assets,
         validate_evidence_quality_report_assets,
+        validate_data_lineage_assets,
         validate_data_deletion_evidence_assets,
         validate_third_party_dependency_assets,
         validate_tabletop_evidence_assets,

@@ -85,6 +85,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 27. Map NIST AI RMF functions to toolkit evidence with `scripts/nist_ai_rmf_crosswalk_report.py`.
 28. Summarize AI red-team finding taxonomy coverage with `scripts/red_team_taxonomy_report.py`.
 29. Review evidence quality and freshness with `scripts/evidence_quality_report.py`.
+30. Review AI data provenance, transformation evidence, transfer records, and owner queues with `scripts/data_lineage_report.py`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -102,6 +103,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-risk-tiering-decision-record.md` | Classify AI systems into risk tiers, set required control baselines, define approval routes, and record residual-risk decisions |
 | `templates/ai-system-decommissioning-checklist.md` | Retire AI systems safely by handling data, credentials, vector stores, logs, vendor access, integrations, evidence, and residual risk |
 | `templates/ai-data-flow-record.md` | Document AI data sources, processing steps, destinations, classifications, and controls |
+| `templates/ai-data-lineage-register.csv` | Track source systems, owners, classifications, transformations, legal basis, retention, transfers, and review dates for AI data assets |
+| `templates/ai-data-lineage-report.md` | Operating guide for reviewing data provenance, source ownership, transformation evidence, legal basis, retention, transfer, and review freshness |
 | `templates/ai-data-deletion-evidence-register.csv` | Track AI deletion requests, processors, scopes, due dates, completion evidence, verification, and retention exceptions |
 | `templates/ai-data-deletion-evidence-report.md` | Operating guide for reporting overdue deletions, missing evidence, unverified completions, and retention-exception review queues |
 | `templates/ai-access-review.md` | Review user, administrator, service account, API key, and agent tool permissions |
@@ -160,6 +163,8 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `scripts/nist_ai_rmf_crosswalk_report.py` | Generate Markdown or JSON summaries of NIST AI RMF function coverage, control coverage, evidence cadence, and owner queues |
 | `scripts/red_team_taxonomy_report.py` | Generate Markdown or JSON summaries of red-team finding severity, release holds, owner queues, and control coverage |
 | `scripts/evidence_quality_report.py` | Generate Markdown or JSON reports for evidence ownership, freshness, overdue items, cadence gaps, and owner queues |
+| `scripts/data_lineage_report.py` | Generate Markdown or JSON reports for AI data lineage completeness, provenance, sensitive-data evidence, transfer records, and owner queues |
+| `examples/ai-data-lineage-sample.csv` | Sample lineage register covering healthy, public-source, owner-missing, transfer-gap, and overdue-review states |
 | `examples/ai-data-deletion-evidence-sample.csv` | Sample deletion evidence register covering overdue, verified, missing-evidence, and retention-exception states |
 | `examples/ai-access-recertification-sample.csv` | Sample AI access recertification register covering privileged access, unowned tokens, separated identities, break-glass access, and current audit roles |
 | `examples/ai-access-recertification-report.json` | Example machine-readable output from the access recertification report |
