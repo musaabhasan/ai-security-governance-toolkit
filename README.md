@@ -29,6 +29,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Data deletion evidence | Register and report for prompt, output, file, embedding, log, vector-store, and third-party deletion proof |
 | Vendor due diligence | AI procurement scoring, vendor questionnaire, data handling, security, model controls, compliance, and continuity |
 | Third-party dependency assurance | Provider/subprocessor register, assurance review, DPA status, subprocessor transparency, exit planning, and continuity evidence |
+| Shadow AI discovery | Triage template for unmanaged AI tools, data exposure, owner assignment, remediation, and exception handling |
 | Logging and retention | Checklist for prompt, output, embedding, tool-call, and operational log governance |
 | Agentic safety | Tool-use review, privilege boundaries, human approval gates, and execution logging |
 | Agent memory governance | Persistent memory register and review report for consent, stale facts, deletion evidence, retrieval boundaries, and memory poisoning risks |
@@ -96,6 +97,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 34. Review persistent memory with `templates/ai-agent-memory-governance-register.md` and `templates/ai-agent-memory-governance-report.md`.
 35. Run governance forums with `templates/ai-governance-review-agenda.md`.
 36. Review RAG, knowledge-base, vector-store, and memory retrieval behavior with `templates/ai-retrieval-integrity-review.md`.
+37. Triage unmanaged or unclear AI use with `templates/ai-shadow-ai-discovery-triage.md`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -111,6 +113,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | --- | --- |
 | `templates/ai-change-impact-assessment.md` | Review governance, data, model, tool, compliance, and continuity impact after AI system changes |
 | `templates/ai-risk-tiering-decision-record.md` | Classify AI systems into risk tiers, set required control baselines, define approval routes, and record residual-risk decisions |
+| `templates/ai-shadow-ai-discovery-triage.md` | Triage unmanaged AI tools discovered through telemetry, expenses, surveys, DLP alerts, support tickets, procurement, or self-disclosure |
 | `templates/ai-system-decommissioning-checklist.md` | Retire AI systems safely by handling data, credentials, vector stores, logs, vendor access, integrations, evidence, and residual risk |
 | `templates/ai-data-flow-record.md` | Document AI data sources, processing steps, destinations, classifications, and controls |
 | `templates/ai-data-lineage-register.csv` | Track source systems, owners, classifications, transformations, legal basis, retention, transfers, and review dates for AI data assets |
