@@ -20,6 +20,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Risk management | AI risk tiering, AI risk register, risk-register reporting, control ownership, inherent/residual scoring, and decision tracking |
 | Governance forums | Repeatable review agendas, decision logs, risk acceptance records, required participants, and follow-up tracking |
 | Decision contestability | Review template for notice, explanation, appeal, correction, human review, and remediation controls for AI-supported decisions |
+| Human review calibration | Template for testing reviewer independence, consistency, overrides, workload, bias indicators, escalation, and evidence quality |
 | Control catalog | Governance, identity, data, model, agent, vendor, monitoring, and continuity controls |
 | Evidence management | Evidence register, test records, exception tracking, and audit-ready documentation |
 | Evidence quality | Evidence freshness, ownership, source, cadence, status, and owner-review queues |
@@ -102,6 +103,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 37. Triage unmanaged or unclear AI use with `templates/ai-shadow-ai-discovery-triage.md`.
 38. Review synthetic data releases with `templates/ai-synthetic-data-release-review.md`.
 39. Review appealability and human oversight for high-impact decisions with `templates/ai-decision-contestability-review.md`.
+40. Calibrate human review quality with `templates/ai-human-review-calibration.md`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -122,6 +124,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-system-decommissioning-checklist.md` | Retire AI systems safely by handling data, credentials, vector stores, logs, vendor access, integrations, evidence, and residual risk |
 | `templates/ai-data-flow-record.md` | Document AI data sources, processing steps, destinations, classifications, and controls |
 | `templates/ai-decision-contestability-review.md` | Review notice, explanation, evidence access, correction, appeal, human review, and remediation controls for AI-supported decisions |
+| `templates/ai-human-review-calibration.md` | Test human review independence, consistency, override quality, automation-bias indicators, reviewer workload, and escalation evidence |
 | `templates/ai-data-lineage-register.csv` | Track source systems, owners, classifications, transformations, legal basis, retention, transfers, and review dates for AI data assets |
 | `templates/ai-data-lineage-report.md` | Operating guide for reviewing data provenance, source ownership, transformation evidence, legal basis, retention, transfer, and review freshness |
 | `templates/ai-data-deletion-evidence-register.csv` | Track AI deletion requests, processors, scopes, due dates, completion evidence, verification, and retention exceptions |
