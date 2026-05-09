@@ -21,6 +21,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Control catalog | Governance, identity, data, model, agent, vendor, monitoring, and continuity controls |
 | Evidence management | Evidence register, test records, exception tracking, and audit-ready documentation |
 | Evidence quality | Evidence freshness, ownership, source, cadence, status, and owner-review queues |
+| Evidence retention | Retention windows, storage controls, deletion triggers, legal holds, and privacy minimization for AI governance evidence |
 | Control testing | Evidence packs and examples for AI control design and operating-effectiveness review |
 | Evaluation evidence | Release-readiness reporting for AI evaluation suites, dataset lineage, security cases, human review, pass rates, and stale evidence |
 | Exception management | Aging report for expired, expiring, missing-expiration, and inconsistent AI governance exceptions |
@@ -88,6 +89,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 30. Review AI data provenance, transformation evidence, transfer records, and owner queues with `scripts/data_lineage_report.py`.
 31. Triage AI privacy review and DPIA triggers with `scripts/dpia_triage_report.py`.
 32. Review rollback readiness for model, prompt, provider, safety-filter, and RAG releases with `scripts/rollback_readiness_report.py`.
+33. Set evidence retention, deletion, storage, and legal-hold expectations with `templates/ai-evidence-retention-schedule.md`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -122,6 +124,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-control-test-evidence-pack.md` | Package AI control test objectives, population, sample, evidence inventory, exceptions, remediation, and reviewer conclusions |
 | `templates/ai-control-test-evidence-examples.csv` | Spreadsheet-friendly examples for operating-effectiveness evidence packs across agent tools, prompt injection, RAG boundaries, monitoring, and continuity |
 | `templates/ai-evidence-quality-report.md` | Operating guide for reviewing stale, missing, expired, unowned, or incomplete AI governance evidence |
+| `templates/ai-evidence-retention-schedule.md` | Define AI governance evidence retention periods, storage controls, deletion triggers, legal holds, privacy minimization, and owner accountability |
 | `templates/ai-evaluation-evidence-register.csv` | Track AI evaluation suites, dataset lineage, model/prompt/index versions, pass rates, failures, security/bias/citation coverage, human review, and release decisions |
 | `templates/ai-evaluation-evidence-report.md` | Operating guide for reviewing stale, incomplete, low-scoring, or release-blocking AI evaluation evidence |
 | `templates/ai-red-team-test-plan.md` | Plan AI red-team scenarios, evidence capture, pass/fail criteria, and release decisions |
