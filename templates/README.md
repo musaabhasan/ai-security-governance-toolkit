@@ -12,6 +12,7 @@ This index lists the reusable governance templates included in the toolkit.
 | [AI Control Test Evidence Pack](ai-control-test-evidence-pack.md) | Use this pack to document test objective, population, sample, evidence inventory, result assessment, exceptions, and remediation for AI control operating-effectiveness reviews. |
 | [AI Data Flow Record](ai-data-flow-record.md) | Use this record to document how data enters, moves through, and leaves an AI system. |
 | [AI Decision Contestability Review](ai-decision-contestability-review.md) | Use this template before approving AI-supported decisions that need notice, explanation, correction, appeal, human review, and remediation controls. |
+| [AI Emergency Stop Drill](ai-emergency-stop-drill.md) | Use this template to test whether an AI system, assistant, model gateway, RAG workflow, or agent can be paused, contained, rolled back, and restarted safely. |
 | [AI Human Review Calibration](ai-human-review-calibration.md) | Use this template to test whether human review is independent, consistent, evidence-based, and resistant to automation bias. |
 | [AI Data Lineage Report](ai-data-lineage-report.md) | Use this report to review data provenance, source ownership, transformation evidence, legal basis, retention, transfer, and review freshness before release or audit. |
 | [AI Data Deletion Evidence Report](ai-data-deletion-evidence-report.md) | Use this report to review deletion evidence across prompts, outputs, files, embeddings, logs, vector stores, and third-party processors. |
