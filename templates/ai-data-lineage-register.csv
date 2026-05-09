@@ -1,0 +1,2 @@
+lineage_id,system,data_asset,source_system,source_owner,data_classification,processing_stage,model_or_index_version,downstream_use,legal_basis_or_consent,transformation_evidence,quality_check,retention_rule,cross_border_transfer,subprocessor,review_owner,last_reviewed,next_review,status,notes
+LIN-001,Example AI Assistant,Example source dataset,Example source system,Data Owner,internal,rag_source,v1,grounded answer retrieval,approved use case,transformation log,passed,retain 12 months,no,,Governance Owner,2026-05-01,2026-08-01,current,Template row for lineage tracking
