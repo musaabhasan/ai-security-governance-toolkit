@@ -18,6 +18,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | --- | --- |
 | AI system intake | Initial AI use-case review, data classification, deployment model, ownership, and approval path |
 | Risk management | AI risk tiering, AI risk register, risk-register reporting, control ownership, inherent/residual scoring, and decision tracking |
+| Risk acceptance | Time-bound model risk acceptance records with affected users, compensating controls, expiry dates, review triggers, approval evidence, and closure conditions |
 | Governance forums | Repeatable review agendas, decision logs, risk acceptance records, required participants, and follow-up tracking |
 | Decision contestability | Review template for notice, explanation, appeal, correction, human review, and remediation controls for AI-supported decisions |
 | Human review calibration | Template for testing reviewer independence, consistency, overrides, workload, bias indicators, escalation, and evidence quality |
@@ -108,6 +109,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 40. Calibrate human review quality with `templates/ai-human-review-calibration.md`.
 41. Test emergency stop readiness with `templates/ai-emergency-stop-drill.md`.
 42. Review evaluation dataset contamination risk with `templates/ai-evaluation-contamination-review.md`.
+43. Record time-bound residual model risk decisions with `templates/ai-model-risk-acceptance-register.md`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -130,6 +132,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-decision-contestability-review.md` | Review notice, explanation, evidence access, correction, appeal, human review, and remediation controls for AI-supported decisions |
 | `templates/ai-emergency-stop-drill.md` | Test stop triggers, stop authority, containment, evidence preservation, fallback, rollback, communications, and restart readiness |
 | `templates/ai-evaluation-contamination-review.md` | Check benchmark leakage, holdout exposure, answer-key retrieval, synthetic reuse, reviewer conflict, and vendor boundary evidence before relying on evaluation scores |
+| `templates/ai-model-risk-acceptance-register.md` | Record time-bound residual risk acceptance with compensating controls, affected users, expiry dates, review triggers, approval evidence, rollback conditions, and closure status |
 | `templates/ai-human-review-calibration.md` | Test human review independence, consistency, override quality, automation-bias indicators, reviewer workload, and escalation evidence |
 | `templates/ai-data-lineage-register.csv` | Track source systems, owners, classifications, transformations, legal basis, retention, transfers, and review dates for AI data assets |
 | `templates/ai-data-lineage-report.md` | Operating guide for reviewing data provenance, source ownership, transformation evidence, legal basis, retention, transfer, and review freshness |
