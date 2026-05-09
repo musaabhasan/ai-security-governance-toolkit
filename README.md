@@ -44,6 +44,7 @@ This toolkit is built around a simple premise: AI security is not only a model p
 | Decommissioning | Retirement checklist for model, provider, data, credential, log, vector-store, and integration shutdown |
 | Model/provider changes | Approval workflow for model, provider, endpoint, embedding, safety-filter, region, and agent-runtime changes |
 | Model monitoring | KPI register for quality, safety, retrieval integrity, drift, security, reliability, cost, privacy, and oversight |
+| Retrieval integrity | Review template for RAG source authority, temporal validity, stale facts, citation precision, and poisoned-source controls |
 | EdTech example | AI assistant governance profile for learning platforms and student-facing workflows |
 | Playbooks | Prompt injection incident response and AI service outage tabletop scenarios |
 | Policy as code | Open Policy Agent examples for AI tool execution decisions |
@@ -94,6 +95,7 @@ The toolkit is designed to be framework-aware without pretending to replace form
 33. Set evidence retention, deletion, storage, and legal-hold expectations with `templates/ai-evidence-retention-schedule.md`.
 34. Review persistent memory with `templates/ai-agent-memory-governance-register.md` and `templates/ai-agent-memory-governance-report.md`.
 35. Run governance forums with `templates/ai-governance-review-agenda.md`.
+36. Review RAG, knowledge-base, vector-store, and memory retrieval behavior with `templates/ai-retrieval-integrity-review.md`.
 
 Validate repository artifacts before opening a pull request:
 
@@ -134,6 +136,7 @@ The validator checks Markdown templates, template index coverage, control catalo
 | `templates/ai-evaluation-evidence-register.csv` | Track AI evaluation suites, dataset lineage, model/prompt/index versions, pass rates, failures, security/bias/citation coverage, human review, and release decisions |
 | `templates/ai-evaluation-evidence-report.md` | Operating guide for reviewing stale, incomplete, low-scoring, or release-blocking AI evaluation evidence |
 | `templates/ai-red-team-test-plan.md` | Plan AI red-team scenarios, evidence capture, pass/fail criteria, and release decisions |
+| `templates/ai-retrieval-integrity-review.md` | Review RAG source authority, temporal validity, stale fact handling, citation precision, retrieval boundaries, and poisoned-source controls |
 | `templates/ai-governance-escalation-decision-tree.md` | Route AI use cases, incidents, model/provider changes, agent tools, and research risks to the correct governance review path |
 | `templates/ai-governance-review-agenda.md` | Run structured governance forums with required participants, pre-read evidence, decision options, risk acceptance, and follow-up tracking |
 | `controls/ai-red-team-finding-taxonomy.md` | Classify AI red-team findings by risk theme, severity floor, evidence, release decision, owner role, and control mapping |
