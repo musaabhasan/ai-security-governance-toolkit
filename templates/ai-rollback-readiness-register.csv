@@ -1,0 +1,2 @@
+rollback_id,system,change_type,current_version,fallback_version,rollback_owner,trigger_condition,last_drill_date,rollback_runbook,evaluation_baseline,traffic_shift_plan,data_schema_compatible,credential_rollback_ready,communication_plan,approval_status,next_drill_due,status,notes
+RB-001,Example AI Assistant,prompt,prompt-v2,prompt-v1,Release Owner,quality regression,2026-05-01,runbook link,baseline eval link,blue-green switch,yes,yes,stakeholder note,approved,2026-08-01,current,Template row for rollback readiness
